@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { Data, images } from "../../constants";
 import { Link } from "react-router-dom";
 import NavITem from "../NavItem/NavITem";
@@ -12,10 +12,10 @@ const Navbar = () => {
 /* The code snippet you provided is a React functional component for a Navbar. */
   const [DarkMode, setDarkMode] = useContext(DarkModeContext);
   const { isNavVisible, toggleNav } = UseResponsiveNav();
-
+  const [dropdown,setDropdown] = useState(false)
   return (
     <section>
-      <header className="flex items-center justify-between py-6 px-10 sm:px-6">
+      <header className="flex items-center justify-between py-6 px-10 sm:px-0">
         <div>
           <img
             src={DarkMode ? images.darkmodeLogo : images.logo}
@@ -34,20 +34,20 @@ const Navbar = () => {
         >
           <ul className="flex flex-col lg:flex-row items-center gap-y-4 lg:gap-x-4 font-semibold tracking-wider">
             {Data.NavInfo.map((item, i) => {
-           return   item.type === "link"?  <NavITem name={item.name} path={item.path} key={i} />:<>
+           return   item.type === "link"?  <NavITem name={item.name} path={item.path} key={i} />:<div className="flex flex-col items-center">
              <li className="relative group">
-             <Link  className="px-4 py-2 flex gap-1 items-center">{item.name}              <MdArrowDropDown className="text-2xl group-hover:rotate-180 transition-all duration-150"/>
-             </Link>
+             <button  className="px-4 py-2 flex gap-1 items-center" onClick={()=>setDropdown(!dropdown)}>{item.name}              <MdArrowDropDown className="text-2xl group-hover:rotate-180 transition-all duration-150"/>
+             </button>
             
-              <div className="hidden transition-all duration-500 pt-4 absolute top-0 bottom-0  transform translate-y-full group-hover:block w-max">
-              <div className="flex flex-col rounded-lg shadow-lg dark:bg-gray-900 dark:text-white dark:shadow-primary p-2">
+              <div className={`${dropdown?"block":"hidden"} lg:hidden transition-all duration-500 pt-4 lg:absolute lg:top-0 lg:bottom-0  lg:transform lg:translate-y-full lg:group-hover:block w-max`}>
+              <div className="flex flex-col bg-gray-700 sm:bg-white z-[99] sm:z-0 rounded-lg shadow-lg dark:bg-gray-900 dark:text-white dark:shadow-primary p-2">
               {item.items.map((item, i) =>{
                   return  <Link className="px-4 py-2 hover:underline" to={item.path}>{item.name}</Link>
                 })}
               </div>
               </div>
              </li>
-              </>
+              </div>
             })}
           </ul>
           <Link

@@ -1,11 +1,12 @@
 import React from "react";
 import Navbar from "../Navbar/Navbar";
 import { Footer } from "../Footer/Footer";
+import Hero from "../../pages/Home/Container/Hero";
 
-const MainLayout = ({Children}) => {
+const MainLayout = ({children}) => {
   return <div>
     <Navbar/>
-    {Children}
+    {children}
     {/* <Footer/> */}
   </div>;
 };
