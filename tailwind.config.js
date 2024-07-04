@@ -19,7 +19,12 @@ export default {
         padding:{
           default:"1rem",
           sm:"3rem",
+        
         }
+      },
+      fontFamily:{
+        roboto:["'Roboto'", "sans-serif"],
+        opensans:["'Open Sans'", "sans-serif"],
       }
     },
   },
