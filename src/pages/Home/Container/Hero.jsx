@@ -11,7 +11,7 @@ const Hero = () => {
     <section className="flex justify-center lg:justify-between flex-col sm:flex-row px-10 sm:px-0">
       <div className="flex flex-col gap-4 text-center py-32">
         <h1 className="text-3xl sm:text-4xl text-gray-800 dark:text-white font-bold">Read The Most interesting Articles</h1>
-        <p className="text-gray-500 font-bold  w-[300px] text-center dark:text-gray-500  sm:w-[500px]">
+        <p className="text-gray-500 font-bold  w-[300px] mx-auto dark:text-gray-500  sm:w-[500px]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
           sint ab harum reiciendis, itaque possimus, fugiat.
         </p>
@@ -28,7 +28,7 @@ const Hero = () => {
         </div>
         <div className="flex gap-4 mt-4 items-center flex-col sm:flex-row">
             <span className="italic">Popular Tags:</span>
-            <ul className="flex gap-4 italic">
+            <ul className="flex gap-4 italic flex-wrap  justify-center">
                 <li className="bg-green-100 font-bold rounded-md dark:text-white dark:bg-gray-800 p-2 text-primary ">Design</li>
                 <li className="bg-green-100 font-bold rounded-md dark:text-white dark:bg-gray-800 p-2 text-primary">Programming</li>
                 <li className="bg-green-100 font-bold rounded-md dark:text-white dark:bg-gray-800 p-2 text-primary">Cloud Computing</li>
