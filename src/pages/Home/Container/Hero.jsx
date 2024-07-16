@@ -8,8 +8,9 @@ const Hero = () => {
     setVaalue(e.target.value)
   }
   return (
-    <section className="flex justify-center lg:justify-between flex-col sm:flex-row px-10 sm:px-0">
-      <div className="flex flex-col gap-4 text-center py-32">
+  <div className="container">
+      <section className="flex justify-center lg:justify-between flex-col sm:flex-row px-10 sm:px-0">
+      <div className="flex flex-col gap-4 text-center py-32 ">
         <h1 className="text-3xl sm:text-4xl text-gray-800 dark:text-white font-bold">Read The Most interesting Articles</h1>
         <p className="text-gray-500 font-bold  w-[300px] mx-auto dark:text-gray-500  sm:w-[500px]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
@@ -40,6 +41,7 @@ const Hero = () => {
         <img src={images.HeroImage} alt="image that describe users reading articles" className="w-[900px] object-cover dark:bg-gray-900 hidden lg:block" />
       </div>
     </section>
+  </div>
   );
 };
 

@@ -14,10 +14,10 @@ const Navbar = () => {
   const { isNavVisible, toggleNav } = UseResponsiveNav();
   const [dropdown,setDropdown] = useState(false)
   return (
-    <section>
+    <section className="container">
       <header className="flex items-center justify-between py-6 px-10 sm:px-0">
         <div>
-          <img
+          <img 
             src={DarkMode ? images.darkmodeLogo : images.logo}
             className="w-20"
             alt="logo"

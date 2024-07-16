@@ -4,6 +4,7 @@ import { Route, Routes } from 'react-router-dom';
 import NotFound from './pages/NotFound/404';
 import { DarkModeContext } from './store';
 import DarkModeToggler from './components/DarkModeToggler/DarkModeToggler';
+import ArticaleDetailPage from './pages/ArticlePage/ArticaleDetailPage';
 
 const App = () => {
   // inti dark mode 
@@ -19,7 +20,7 @@ const App = () => {
   return (
 <>
 <div className=' dark:bg-gray-900 dark:text-white font-roboto'>
-  <div className="container">
+  
 {/* The `<DarkModeContext.Provider value={[dark, setDark]}>` component is providing the `dark` state and
 `setDark` function to all components that are descendants of it. This is achieved using React's
 Context API. By wrapping components with this provider, those components can access the `dark` state
@@ -41,12 +42,13 @@ mode functionality of the application. */}
     <Routes>
 
 <Route element={<Home/>} path='/'/>
+<Route element={<ArticaleDetailPage/>} path='/article/:id'/>
 <Route element={<NotFound/>} path='*'/>
 
     </Routes>
 
   </DarkModeContext.Provider>
-  </div>
+  
 
 </div>
 </>    
