@@ -15,7 +15,7 @@ const ArticleCard = ({ className,to }) => {
 
   return (
     <div
-      className={`${className} rounded-xl overflow-hidden shadow-2xl shadow-blue-500/20`}
+      className={`${className} rounded-xl overflow-hidden shadow-2xl shadow-blue-500/20 dark:shadow-primary/20`}
     >
 <Link to={to}>
 <img
