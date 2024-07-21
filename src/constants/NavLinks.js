@@ -1,5 +1,5 @@
 
-const Data = {
+const NavLinks = {
     NavInfo:[{
         name:"Home",
         path:"/",
@@ -32,5 +32,5 @@ const Data = {
         type:"link"
     }]
 }
- export default Data;
+ export default NavLinks;
  

@@ -57,7 +57,7 @@ const ArticaleDetailPage = () => {
 
 {/* leave a comment  */}
 
-        <CommentContainer/>
+        <CommentContainer loginnedUserId="a"/>
 
  {/* latest articles  */}
         <div className=" py-5 flex flex-col gap-8 px-5 mt-14 lg:mt-0 shadow-2xl shadow-blue-500/20 rounded-xl dark:shadow-primary/20">
