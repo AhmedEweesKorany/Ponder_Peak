@@ -6,11 +6,11 @@ const Comment = ({comment,loginnedUserId}) => {
   const isUserLoggedIn = Boolean(loginnedUserId)
   const commentEdit = loginnedUserId === comment.user._id
   return (
-    <div className='flex gap-x-3 bg-[#f2f4f5] p-3 rounded-lg'>
+    <div className='flex gap-x-3 bg-[#f2f4f5] p-3 rounded-lg dark:bg-transparent dark:border dark:border-gray-600'>
 
       <img src={images.postProfile1} alt="user Profile " className='w-9 h-9 object-cover rounded-full' />
       <div className='flex flex-col flex-1'>
-<h5 className='font-bold text-xs text-semiblack'>
+<h5 className='font-bold text-xs text-semiblack dark:text-white dark:font-bold'>
   {comment.user.name}
 </h5>
 <span className='text-xs text-gray-500'>

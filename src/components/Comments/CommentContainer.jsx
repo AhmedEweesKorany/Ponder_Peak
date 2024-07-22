@@ -8,7 +8,8 @@ export default function CommentContainer({className,loginnedUserId}) {
   const mainComments = comments.filter(item=> item.parent == null)
   const replyComments = comments.filter(item=> item.parent != null)
 
-console.log(replyComments)
+  const [affectedComments,setAffectedComments] = useState(null)
+// console.log(replyComments)
 
 /* The `useEffect` hook in the provided code snippet is used to fetch comments data when the component
 mounts for the first time. Here's a breakdown of what it does: */
@@ -41,7 +42,7 @@ mounts for the first time. Here's a breakdown of what it does: */
         <CommentForm formSubmitHandler={(text)=> addCommentHandler(text)}/>
           <div className='space-y-4 mt-8'>
             {mainComments.map((comment,i)=>{
-               return <Comment key={i} comment={comment} loginnedUserId={loginnedUserId}/>
+               return <Comment key={i} comment={comment} loginnedUserId={loginnedUserId} affectedComments={affectedComments} setAffectedComments={setAffectedComments}/>
             })}
           </div>
     </div>

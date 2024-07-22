@@ -5,6 +5,7 @@ import { images } from "../../constants";
 import { Link } from "react-router-dom";
 import CommentForm from "../../components/Comments/CommentForm";
 import CommentContainer from "../../components/Comments/CommentContainer";
+import SocialMediaShare from "./SocialMediaShare";
 
 const BreadCrumbData = [{
   link:"/",
@@ -53,11 +54,11 @@ const ArticaleDetailPage = () => {
         <h1 className=" dark:text-white text-semiblack text-3xl font-bold my-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h1>
         <p className="text-gray-600 dark:text-gray-400 tracking-wider leading-7">Lorem ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quam adipisci. Aspernatur vero at tenetur id similique atque et tempora repellat ad? Vel blanditiis molestias quis et itaque distinctio eum, quam aliquid totam dicta cupiditate saepe iusto expedita doloribus amet, reprehenderit omnis, veniam facilis ab. Voluptatem, soluta praesentium. Ipsam, a? dolor sit, amet consectetur adipisicing elit. Unde nihil eos deserunt sed amet blanditiis laborum autem necessitatibus quia aperiam accusamus modi, nobis perferendis accusantium eius quae. Provident, distinctio laudantium?</p>
 
+        <CommentContainer loginnedUserId="a"/>
         </div>
 
 {/* leave a comment  */}
 
-        <CommentContainer loginnedUserId="a"/>
 
  {/* latest articles  */}
         <div className=" py-5 flex flex-col gap-8 px-5 mt-14 lg:mt-0 shadow-2xl shadow-blue-500/20 rounded-xl dark:shadow-primary/20">
@@ -78,6 +79,7 @@ const ArticaleDetailPage = () => {
 
             </div>
           </div>
+        <SocialMediaShare/>
         </div>
         </section>{" "}
     </MainLayout>
