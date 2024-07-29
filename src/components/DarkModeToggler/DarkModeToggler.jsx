@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { MdDarkMode, MdLightMode } from 'react-icons/md'
-import { DarkModeContext } from '../../store';
+import { DarkModeContext } from '../../Context';
 
 const DarkModeToggler = () => {
     const [DarkMode, setDarkMode] = useContext(DarkModeContext);

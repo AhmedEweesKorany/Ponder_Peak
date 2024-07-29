@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Home from './pages/Home/Home';
 import { Route, Routes } from 'react-router-dom';
 import NotFound from './pages/NotFound/404';
-import { DarkModeContext } from './store';
+import { DarkModeContext } from './Context';
 import DarkModeToggler from './components/DarkModeToggler/DarkModeToggler';
 import ArticaleDetailPage from './pages/ArticlePage/ArticaleDetailPage';
 

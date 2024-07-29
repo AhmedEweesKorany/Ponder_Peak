@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import { Data, images } from "../../constants";
 import { Link } from "react-router-dom";
 import NavITem from "../NavItem/NavITem";
-import { DarkModeContext } from "../../store";
+import { DarkModeContext } from "../../Context";
 import UseResponsiveNav from "../../hooks/UseResponsiveNav";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { MdArrowDropDown } from "react-icons/md";
