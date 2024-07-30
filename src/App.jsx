@@ -5,16 +5,19 @@ import NotFound from './pages/NotFound/404';
 import { DarkModeContext } from './Context';
 import DarkModeToggler from './components/DarkModeToggler/DarkModeToggler';
 import ArticaleDetailPage from './pages/ArticlePage/ArticaleDetailPage';
+import Register from './pages/Register/Register';
 
 const App = () => {
   // inti dark mode 
-  const [dark, setDark] = useState(false);
+  const [dark, setDark] = useState(localStorage.getItem('darkMode') || false);
   const element = document.documentElement;
 
   if (dark) {
     element.classList.add("dark");
+    localStorage.setItem('darkMode', true);
   } else {
     element.classList.remove("dark");
+    localStorage.removeItem('darkMode');
   }
   
   return (
@@ -43,6 +46,7 @@ mode functionality of the application. */}
 
 <Route element={<Home/>} path='/'/>
 <Route element={<ArticaleDetailPage/>} path='/article/:id'/>
+<Route element={<Register/>} path='/register'/>
 <Route element={<NotFound/>} path='*'/>
 
     </Routes>
