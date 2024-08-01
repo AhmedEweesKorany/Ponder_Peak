@@ -6,6 +6,7 @@ import { DarkModeContext } from './Context';
 import DarkModeToggler from './components/DarkModeToggler/DarkModeToggler';
 import ArticaleDetailPage from './pages/ArticlePage/ArticaleDetailPage';
 import Register from './pages/Register/Register';
+import { Toaster } from 'react-hot-toast';
 
 const App = () => {
   // inti dark mode 
@@ -54,6 +55,7 @@ mode functionality of the application. */}
   </DarkModeContext.Provider>
   
 
+<Toaster/>
 </div>
 </>    
   )
