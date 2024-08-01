@@ -2,17 +2,24 @@ import React, { useState } from "react";
 import { images } from "../../../constants";
 import { BiSearch } from "react-icons/bi";
 
+
+
+
+const handleClick = ()=>{
+  driverObj.drive();
+
+}
 const Hero = () => {
   const [value,setVaalue] = useState("")
   const valueHandler = (e)=>{
     setVaalue(e.target.value)
   }
   return (
-  <div className="container">
+  <div className="container" >
       <section className="flex justify-center lg:justify-between flex-col sm:flex-row px-10 sm:px-0">
       <div className="flex flex-col gap-4 text-center py-32 ">
-        <h1 className="text-3xl sm:text-4xl text-gray-800 dark:text-white font-bold">Read The Most interesting Articles</h1>
-        <p className="text-gray-500 font-bold  w-[300px] mx-auto dark:text-gray-500  sm:w-[500px]">
+        <h1 id="ddd" className=" text-3xl sm:text-4xl text-gray-800 dark:text-white font-bold">Read The Most interesting Articles</h1>
+        <p id="ppp" className="text-gray-500 font-bold  w-[300px] mx-auto dark:text-gray-500  sm:w-[500px]">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Consectetur
           sint ab harum reiciendis, itaque possimus, fugiat.
         </p>
@@ -24,7 +31,7 @@ const Hero = () => {
             <input type="text" onChange={(e)=>valueHandler(e)} name="" id="" placeholder="    Search Article" className=" rounded-md p-3 w-full focus:border-none focus:outline-none dark:shadow-inner dark:bg-gray-800" />
             </div>
         <button onClick={()=>{
-          alert("محمد ومحمود انا هزمتهم")
+          handleClick()
         }} className="bg-primary px-3  rounded-lg text-white w-[130px]">Search</button>
         </div>
         <div className="flex gap-4 mt-4 items-center flex-col sm:flex-row">

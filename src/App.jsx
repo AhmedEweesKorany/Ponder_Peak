@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import Home from './pages/Home/Home';
 import { Route, Routes } from 'react-router-dom';
 import NotFound from './pages/NotFound/404';
@@ -7,19 +7,33 @@ import DarkModeToggler from './components/DarkModeToggler/DarkModeToggler';
 import ArticaleDetailPage from './pages/ArticlePage/ArticaleDetailPage';
 import Register from './pages/Register/Register';
 import { Toaster } from 'react-hot-toast';
+import {driver} from 'driver.js';
+import "driver.js/dist/driver.css";
+import TourGuied from './components/TourGuied/TourGuied';
 
-const App = () => {
-  // inti dark mode 
-  const [dark, setDark] = useState(localStorage.getItem('darkMode') || false);
-  const element = document.documentElement;
+const driverObj = driver({
+    showProgress: true,
+    steps: [
+      { element: '#ddd', popover: { title: 'Header', description: 'This is our hero section header' } },
+      { element: '#ppp', popover: { title: 'description', description: 'this is our hero section description' } },
+      { element: '#contact', popover: { title: 'Contact US Now', description: 'Enter your email to contacct us' } },
+    ]
+  });
 
-  if (dark) {
-    element.classList.add("dark");
+
+  const App = () => {
+    // inti dark mode 
+    const [dark, setDark] = useState(localStorage.getItem('darkMode') || false);
+    const element = document.documentElement;
+    
+    if (dark) {
+      element.classList.add("dark");
     localStorage.setItem('darkMode', true);
   } else {
     element.classList.remove("dark");
     localStorage.removeItem('darkMode');
   }
+  
   
   return (
 <>
@@ -40,7 +54,7 @@ application to reflect the chosen mode. This component is likely connected to th
 `setDark` function provided by the `DarkModeContext.Provider`, allowing it to interact with the dark
 mode functionality of the application. */}
 <DarkModeToggler/>
-
+<TourGuied driverObj={driverObj}/>
 {/* The code snippet you provided is setting up routing for the application using the `Routes` and
 `Route` components from `react-router-dom`. */}
     <Routes>

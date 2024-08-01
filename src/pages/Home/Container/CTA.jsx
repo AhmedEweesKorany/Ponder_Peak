@@ -4,7 +4,7 @@ import { images } from "../../../constants";
 const CTA = () => {
   return (
     <>
-      <section className="bg-semiblack text-white dark:bg-primary w-full h-auto min-h-40 p-0">
+      <section id="contact" className="bg-semiblack text-white dark:bg-primary w-full h-auto min-h-40 p-0">
         <div className="container grid grid-cols-12 mx-auto lg:place-items-center">
           <div className="col-span-12 py-4 px-5 sm:px-0 lg:col-span-6 lg:order-first ">
             <h2 className="font-roboto text-white font-bold text-2xl">
