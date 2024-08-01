@@ -1,18 +1,27 @@
 import React, { useContext, useState } from "react";
 import { Data, images } from "../../constants";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import NavITem from "../NavItem/NavITem";
 import { DarkModeContext } from "../../Context";
 import UseResponsiveNav from "../../hooks/UseResponsiveNav";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { MdArrowDropDown } from "react-icons/md";
+import { useSelector } from "react-redux";
 
 
 const Navbar = () => {
 /* The code snippet you provided is a React functional component for a Navbar. */
   const [DarkMode, setDarkMode] = useContext(DarkModeContext);
+  const userData  = useSelector(state => state.user)
   const { isNavVisible, toggleNav } = UseResponsiveNav();
+  const [loggedIndropdown, setLoggedInDropdown] = useState(false)
   const [dropdown,setDropdown] = useState(false)
+  const navigate = useNavigate()
+  const handleLogout = ()=>{
+    localStorage.removeItem("account")
+    window.location.reload()
+  
+  }
   return (
     <section className="container">
       <header className="flex items-center justify-between py-6 px-10 sm:px-0">
@@ -50,12 +59,32 @@ const Navbar = () => {
               </div>
             })}
           </ul>
-          <Link
+         {
+          userData.userInfo ? (
+
+           <li className="relative group list-none">
+           <button    className=" flex items-center w-fit text-center hover:underline border-primary p-2  border-[3px] rounded-full hover:text-white hover:bg-primary transition-all duration-100"
+ onClick={()=>setLoggedInDropdown(!loggedIndropdown)}> Hello {userData.userInfo.filterdData.name}            <MdArrowDropDown className="text-2xl group-hover:rotate-180 transition-all duration-150"/>
+           </button>
+           <div className={`${loggedIndropdown?"block":"hidden"} lg:hidden transition-all duration-500 pt-4 lg:absolute lg:top-0 lg:bottom-0  lg:transform lg:translate-y-full lg:group-hover:block w-max`}>
+            <div className="flex w-[120px] gap-3 justify-center items-center flex-col bg-gray-700 sm:bg-white z-[99] sm:z-0 rounded-lg shadow-lg dark:bg-gray-900 dark:text-white dark:shadow-primary p-2">
+            
+            <Link  className="w-100 hover:underline"to={"/profile"}>Profile</Link> 
+            <Link  className="w-100 hover:underline" onClick={handleLogout}>Logout</Link> 
+           
+            </div>
+            </div>
+            
+            </li>
+          ) : (
+            <Link
             to={"/login"}
             className=" text-center hover:underline border-primary p-2 w-[110px] border-[3px] rounded-full hover:text-white hover:bg-primary transition-all duration-100"
           >
             Sign in
           </Link>
+          )
+         }
         </div>
       </header>
     </section>

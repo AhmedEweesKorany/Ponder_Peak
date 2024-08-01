@@ -1,25 +1,46 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
 import { singUp } from "../../services/users";
 import toast from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { setUserInfo } from "../../store/reducers/userReducer";
+import { useNavigate } from "react-router-dom";
 
 const Register = () => {
-    
+    const dispatch = useDispatch()
+    const navigate = useNavigate()
+    const userData = useSelector(state=>state.user)
+
+   /* The `useEffect` hook in the provided code snippet is used to conditionally redirect the user to a
+   different page based on the value of `userData`. Here's what it does: */
+    useEffect(()=>{
+      userData.userInfo === null ? null : navigate("/")
+    },[userData.userInfo])
+
     const {mutate,isPending}=useMutation({
         mutationFn:({name,email,password})=>{
             return singUp({name,email,password}) // should return a promise 
         },
         onSuccess: data=> {
-            console.log(data);
+          
+/* The line `const {password,...filterdData} = data.user` is using object destructuring in JavaScript
+to extract the `password` property from the `data.user` object and store it in a variable called
+`password`. The rest of the properties in the `data.user` object are then collected and stored in a
+new object called `filterdData`. */
+            const {password,...filterdData} = data.user 
+            localStorage.setItem("account",JSON.stringify({filterdData,token:data.token,message:data.message}))
+            dispatch(setUserInfo({filterdData,token:data.token,message:data.message}));
             toast.success(data.message)
+            reset()
         },
         onError: error=> {
             console.log(error);
             toast.error(error.message)
         }
     })
+
   const {
     register,
     handleSubmit,  
