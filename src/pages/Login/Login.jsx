@@ -7,8 +7,9 @@ import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserInfo } from "../../store/reducers/userReducer";
 import { Link, useNavigate } from "react-router-dom";
+import login from "../../services/users/login";
 
-const Register = () => {
+const Login = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userData = useSelector(state=>state.user)
@@ -21,7 +22,7 @@ const Register = () => {
 
     const {mutate,isPending}=useMutation({
         mutationFn:({name,email,password})=>{
-            return singUp({name,email,password}) // should return a promise 
+            return login({name,email,password}) // should return a promise 
         },
         onSuccess: data=> {
           
@@ -69,7 +70,7 @@ new object called `filterdData`. */
       <section className="container mx-auto px-5 py-20">
         <div>
           <h1 className=" text-center text-3xl sm:text-5xl font-bold">
-            Sign Up
+            Login
           </h1>
 
           <form
@@ -77,28 +78,7 @@ new object called `filterdData`. */
             action=""
             className="flex flex-col gap-5 w-full  items-center  my-20"
           >
-            <div className="flex flex-col gap-2 items-start">
-              <label className="text-semiblack  dark:text-white" htmlFor="name">
-                Name
-              </label>
-              <input
-                {...register("name", {
-                  required: "Name is required",
-                  pattern: {
-                    value: /^[A-Za-z]+$/,
-                    message: "Name can only contain letters",
-                  },
-                })}
-                placeholder="Enter Name"
-                className={`bg-transparent ${errors.name?.message ? "border-red-500":""} dark:bg-gray-700 p-3 w-[300px] sm:w-[400px] border border-gray-300 dark:border-transparent  rounded-md`}
-                type="text"
-                id="name"
-                name="name"
-              />
-              {errors.name?.message && (
-                <p className="text-red-500 text-md">{errors.name?.message}</p>
-              )}
-            </div>
+     
             <div className="flex flex-col gap-2 items-start">
               <label
                 className="text-semiblack  dark:text-white"
@@ -151,30 +131,7 @@ new object called `filterdData`. */
                 </p>
               )}
             </div>{" "}
-            <div className="flex flex-col gap-2 items-start">
-              <label
-                className="text-semiblack  dark:text-white"
-                htmlFor="cpassword"
-              >
-                Confirm Password
-              </label>
-              <input
-                {...register("confirmPassword", {
-                  validate: (value) =>
-                    value === watch("password") || "Passwords do not match",
-                })}
-                placeholder="Confirm Password"
-                className={`bg-transparent ${errors.confirmPassword?.message ? "border-red-500":""} dark:bg-gray-700 p-3 w-[300px] sm:w-[400px] border border-gray-300 dark:border-transparent  rounded-md`}
-                type="password"
-                id="confirmPassword"
-                name="confirmPassword"
-              />
-              {errors.confirmPassword?.message && (
-                <p className="text-red-500 text-md">
-                  {errors.confirmPassword?.message}
-                </p>
-              )}
-            </div>
+            
             <div className="flex flex-col gap-2 items-start w-[300px] sm:w-[400px]">
               <p className="capitalize text-secondary hover:underline cursor-pointer font-bold">
                 forget password
@@ -184,14 +141,15 @@ new object called `filterdData`. */
                 className={`bg-primary w-full p-5 text-white rounded-lg my-4 ${isPending ? `cursor-not-allowed`:null}`}
                 disabled= {isPending}
               >
-                Register
+                Login
               </button>
               <p>
                 you have an account?{" "}
-                <Link to={"/login"}
+                <Link
+                  to={"/register"}
                   className="text-secondary underline cursor-pointer font-bold"
                 >
-                  login now
+                  Register now
                 </Link>
               </p>
             </div>
@@ -202,4 +160,4 @@ new object called `filterdData`. */
   );
 };
 
-export default Register;
+export default Login;

@@ -10,6 +10,7 @@ import { Toaster } from 'react-hot-toast';
 import {driver} from 'driver.js';
 import "driver.js/dist/driver.css";
 import TourGuied from './components/TourGuied/TourGuied';
+import Login from './pages/Login/Login';
 
 const driverObj = driver({
     showProgress: true,
@@ -62,6 +63,7 @@ mode functionality of the application. */}
 <Route element={<Home/>} path='/'/>
 <Route element={<ArticaleDetailPage/>} path='/article/:id'/>
 <Route element={<Register/>} path='/register'/>
+<Route element={<Login/>} path='/login'/>
 <Route element={<NotFound/>} path='*'/>
 
     </Routes>
