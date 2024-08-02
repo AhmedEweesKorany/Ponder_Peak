@@ -11,6 +11,7 @@ import {driver} from 'driver.js';
 import "driver.js/dist/driver.css";
 import TourGuied from './components/TourGuied/TourGuied';
 import Login from './pages/Login/Login';
+import ProfilePage from './pages/profilePage/ProfilePage';
 
 const driverObj = driver({
     showProgress: true,
@@ -64,6 +65,7 @@ mode functionality of the application. */}
 <Route element={<ArticaleDetailPage/>} path='/article/:id'/>
 <Route element={<Register/>} path='/register'/>
 <Route element={<Login/>} path='/login'/>
+<Route element={<ProfilePage/>} path='/profile'/>
 <Route element={<NotFound/>} path='*'/>
 
     </Routes>

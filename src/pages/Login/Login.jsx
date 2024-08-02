@@ -2,12 +2,11 @@ import React, { useEffect } from "react";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import { useForm } from "react-hook-form";
 import { useMutation } from "@tanstack/react-query";
-import { singUp } from "../../services/users";
 import toast from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
 import { setUserInfo } from "../../store/reducers/userReducer";
 import { Link, useNavigate } from "react-router-dom";
-import login from "../../services/users/login";
+import { login } from "../../services/users";
 
 const Login = () => {
     const dispatch = useDispatch()
