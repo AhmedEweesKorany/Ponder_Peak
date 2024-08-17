@@ -1,6 +1,7 @@
 import React from 'react'
 import { images } from "../../constants";
 import { BiHeart } from 'react-icons/bi';
+import { randomAnimation } from '../../services/ui/randonAnimation';
 
 const Footer = () => {
   return (
@@ -10,7 +11,7 @@ const Footer = () => {
 
 <div className="grid grid-cols-2 place-items-center sm:place-items-start  lg:grid-cols-4 lg:w-full  gap-20 sm:order-last w-96 ">
   <div>
-    <ul className="flex flex-col gap-4 capitalize">
+    <ul data-aos = {randomAnimation()} className="flex flex-col gap-4 capitalize">
       <li>Products</li>
       <li>LandingPage</li>
       <li>features</li>
@@ -20,7 +21,7 @@ const Footer = () => {
     </ul>
   </div>
   <div>
-    <ul className="flex flex-col gap-4 capitalize">
+    <ul data-aos = {randomAnimation()} className="flex flex-col gap-4 capitalize">
       <li>Design</li>
       <li>LandingPage</li>
       <li>ui ktia</li>
@@ -30,7 +31,7 @@ const Footer = () => {
     </ul>
   </div>
   <div>
-    <ul className="flex flex-col gap-4 capitalize">
+    <ul data-aos = {randomAnimation()} className="flex flex-col gap-4 capitalize">
       <li>comapny</li>
       <li>about</li>
       <li>terms</li>
@@ -38,7 +39,7 @@ const Footer = () => {
       <li>careers</li>
     </ul>
   </div><div>
-    <ul className="flex flex-col gap-4 capitalize">
+    <ul data-aos = {randomAnimation()} className="flex flex-col gap-4 capitalize">
       <li>more</li>
       <li>documantation</li>
       <li>license</li>
@@ -48,7 +49,7 @@ const Footer = () => {
 </div>
 <div className='flex flex-col items-center px-5 gap-10 mt-10'>
   <div className="flex flex-col items-center">
-    <img src={images.logo} width={40} height={40} alt="" />
+    <img src={images.logo} data-aos = {randomAnimation()} width={40} height={40} alt="" />
     <p className='text-center mt-2 text-gray-500'>Lorem ipsum dolor sit amet consectetur.</p>
   </div>
 </div>
@@ -58,7 +59,7 @@ const Footer = () => {
     <BiHeart />
 
     </div>
-    <p className='mt-4 text-center text-white'>All rights reversed @ Ahmed Ewees</p>
+    <p className='mt-4 text-center text-white' data-aos = {randomAnimation()}>All rights reversed @ Ahmed Ewees</p>
   </div>
  </section>
   )

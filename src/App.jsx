@@ -12,7 +12,8 @@ import "driver.js/dist/driver.css";
 import TourGuied from './components/TourGuied/TourGuied';
 import Login from './pages/Login/Login';
 import ProfilePage from './pages/profilePage/ProfilePage';
-
+import Aos from 'aos';
+import 'aos/dist/aos.css';
 const driverObj = driver({
     showProgress: true,
     steps: [
@@ -24,10 +25,10 @@ const driverObj = driver({
 
 
   const App = () => {
-    // inti dark mode 
+    // inti dark mode
     const [dark, setDark] = useState(localStorage.getItem('darkMode') || false);
     const element = document.documentElement;
-    
+
     if (dark) {
       element.classList.add("dark");
     localStorage.setItem('darkMode', true);
@@ -35,12 +36,18 @@ const driverObj = driver({
     element.classList.remove("dark");
     localStorage.removeItem('darkMode');
   }
-  
-  
+
+  useEffect(()=>{
+    Aos.init({
+      duration: 1000,
+    })
+  },[])
+
+
   return (
 <>
 <div className=' dark:bg-gray-900 dark:text-white font-roboto'>
-  
+
 {/* The `<DarkModeContext.Provider value={[dark, setDark]}>` component is providing the `dark` state and
 `setDark` function to all components that are descendants of it. This is achieved using React's
 Context API. By wrapping components with this provider, those components can access the `dark` state
@@ -48,7 +55,7 @@ and `setDark` function without having to pass them down through props manually a
 component tree. This makes it easier to manage and share state across different parts of the
 application. */}
   <DarkModeContext.Provider value={[dark,setDark]}>
-    
+
 {/* The `<DarkModeToggler/>` component is rendering a button or toggle switch that allows the user to
 switch between dark mode and light mode in the application. When clicked, this component will toggle
 the `dark` state between `true` and `false`, which in turn will update the styling of the
@@ -71,11 +78,11 @@ mode functionality of the application. */}
     </Routes>
 
   </DarkModeContext.Provider>
-  
+
 
 <Toaster/>
 </div>
-</>    
+</>
   )
 }
 

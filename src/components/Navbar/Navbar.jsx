@@ -7,6 +7,7 @@ import UseResponsiveNav from "../../hooks/UseResponsiveNav";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 import { MdArrowDropDown } from "react-icons/md";
 import { useSelector } from "react-redux";
+import { randomAnimation } from "../../services/ui/randonAnimation";
 
 
 const Navbar = () => {
@@ -20,13 +21,13 @@ const Navbar = () => {
   const handleLogout = ()=>{
     localStorage.removeItem("account")
     window.location.reload()
-  
+
   }
   return (
     <section className="container">
       <header className="flex items-center justify-between py-6 px-10 sm:px-0">
         <div>
-          <img 
+          <img
             src={DarkMode ? images.darkmodeLogo : images.logo}
             className="w-20"
             alt="logo"
@@ -43,11 +44,11 @@ const Navbar = () => {
         >
           <ul className="flex flex-col lg:flex-row items-center gap-y-4 lg:gap-x-4 font-semibold tracking-wider">
             {Data.NavInfo.map((item, i) => {
-           return   item.type === "link"?  <NavITem name={item.name} path={item.path} key={i} />:<div key={i} className="flex flex-col items-center">
+           return   item.type === "link"?  <NavITem  name={item.name} path={item.path} key={i} />:<div key={i} className="flex flex-col items-center">
              <li className="relative group">
-             <button  className="px-4 py-2 flex gap-1 items-center" onClick={()=>setDropdown(!dropdown)}>{item.name}              <MdArrowDropDown className="text-2xl group-hover:rotate-180 transition-all duration-150"/>
+             <button  className="px-4 py-2 flex gap-1 items-center" data-aos = {randomAnimation()} onClick={()=>setDropdown(!dropdown)}>{item.name}              <MdArrowDropDown className="text-2xl group-hover:rotate-180 transition-all duration-150"/>
              </button>
-            
+
               <div className={`${dropdown?"block":"hidden"} lg:hidden transition-all duration-500 pt-4 lg:absolute lg:top-0 lg:bottom-0  lg:transform lg:translate-y-full lg:group-hover:block w-max`}>
               <div className="flex flex-col bg-gray-700 sm:bg-white z-[99] sm:z-0 rounded-lg shadow-lg dark:bg-gray-900 dark:text-white dark:shadow-primary p-2">
               {item.items.map((item, i) =>{
@@ -68,17 +69,18 @@ const Navbar = () => {
            </button>
            <div className={`${loggedIndropdown?"block":"hidden"} lg:hidden transition-all duration-500 pt-4 lg:absolute lg:top-0 lg:bottom-0  lg:transform lg:translate-y-full lg:group-hover:block w-max`}>
             <div className="flex w-[120px] gap-3 justify-center items-center flex-col bg-gray-700 sm:bg-white z-[99] sm:z-0 rounded-lg shadow-lg dark:bg-gray-900 dark:text-white dark:shadow-primary p-2">
-            
-            <Link  className="w-100 hover:underline"to={"/profile"}>Profile</Link> 
-            <Link  className="w-100 hover:underline" onClick={handleLogout}>Logout</Link> 
-           
+
+            <Link  className="w-100 hover:underline"to={"/profile"}>Profile</Link>
+            <Link  className="w-100 hover:underline" onClick={handleLogout}>Logout</Link>
+
             </div>
             </div>
-            
+
             </li>
           ) : (
             <Link
             to={"/login"}
+            data-aos = {randomAnimation()}
             className=" text-center hover:underline border-primary p-2 w-[110px] border-[3px] rounded-full hover:text-white hover:bg-primary transition-all duration-100"
           >
             Sign in

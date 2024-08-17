@@ -2,6 +2,7 @@ import React from "react";
 import { images } from "../../constants";
 import { BsCheckLg } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import { randomAnimation } from "../../services/ui/randonAnimation";
 
 const ArticleCard = ({ className,to }) => {
   /**
@@ -25,10 +26,10 @@ const ArticleCard = ({ className,to }) => {
       />
 </Link>
       <div className="p-5">
-        <h2 className=" font-roboto font-bold text-x text-semiblack dark:text-white">
+        <h2 data-aos = {randomAnimation()} className=" font-roboto font-bold text-x text-semiblack dark:text-white">
           Feature of Work
         </h2>
-        <p className="text-sm text-semiblack mt-3 dark:text-gray-400">
+        <p data-aos = {randomAnimation()} className="text-sm text-semiblack mt-3 dark:text-gray-400">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum corrupti
           exercitationem quidem cumque doloribus. Sapiente ullam ipsam
           reiciendis harum repudiandae!
@@ -38,21 +39,22 @@ const ArticleCard = ({ className,to }) => {
             <img
               src={images.postProfile1}
               alt=""
+              data-aos = {randomAnimation()}
               className="w-[40px] object-conver rounded-full"
             />
             <div className="fex flex-col">
-              <h4 className="font-bold italic text-semiblack text-sm dark:text-gray-300" >
+              <h4 data-aos = {randomAnimation()} className="font-bold italic text-semiblack text-sm dark:text-gray-300" >
                 Ahmed Ewees
               </h4>
               <div className="flex items-center gap-x-2">
-                <span className="bg-green-100 p-2 rounded-full text-green-700"> 
-                  <BsCheckLg/>
+                <span className="bg-green-100 p-2 rounded-full text-green-700" data-aos = {randomAnimation()}>
+                  <BsCheckLg />
                   </span>
-                <span>Verified Writer</span>
+                <span data-aos = {randomAnimation()}>Verified Writer</span>
               </div>
-            </div> 
+            </div>
           </div>
-          <span>02 may</span>
+          <span data-aos = {randomAnimation()}>02 may</span>
         </div>
       </div>
     </div>
