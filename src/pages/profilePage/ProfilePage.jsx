@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 
 import { useDispatch, useSelector } from "react-redux";
 import {  redirect, useNavigate } from "react-router-dom";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { getUserProfile, updateProfile } from "../../services/users";
 import ProfilePicture from "../../components/ProfilePicture/ProfilePicture";
 import { setUserInfo } from "../../store/reducers/userReducer";
@@ -13,7 +13,7 @@ const ProfilePage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const userData = useSelector(state=>state.user)
-
+    const queryClient = useQueryClient()
 
     const {data:profileData,isLoading:profileIsLoading,error:profileError}= useQuery({
       queryFn:()=>{
@@ -39,19 +39,17 @@ let accountData = JSON.parse(localStorage.getItem("account"));
 
 if (accountData) {
     accountData.filterdData = data.data;
-    accountData.token  = accountData.token + ""
 } else {
     accountData = { filterdData: data.data };
 }
 
 localStorage.setItem("account", JSON.stringify(accountData));
-
+queryClient.invalidateQueries(["profile"])
 console.log(JSON.parse(localStorage.getItem("account")))
 // Redux Update
 dispatch(setUserInfo(JSON.parse(localStorage.getItem("account"))));
 
           toast.success(data.message)
-          redirect("/")
       },
       onError: error=> {
           console.log(error);
@@ -90,7 +88,6 @@ dispatch(setUserInfo(JSON.parse(localStorage.getItem("account"))));
     const {name,email,password} = e
     mutate({name,email,password})
   };
-
   return (
     <MainLayout>
       <section className="container mx-auto px-5 py-20 ">
@@ -100,7 +97,7 @@ dispatch(setUserInfo(JSON.parse(localStorage.getItem("account"))));
           </h1>
           <div className="flex items-center justify-center"> 
 
-        <ProfilePicture/>
+        <ProfilePicture avatar={userData?.userInfo?.filterdData?.avatar}/>
           </div>
           <form
             onSubmit={handleSubmit(submitHanlder)}

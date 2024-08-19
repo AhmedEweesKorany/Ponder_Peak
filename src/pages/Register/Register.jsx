@@ -34,6 +34,7 @@ new object called `filterdData`. */
             dispatch(setUserInfo(JSON.parse(localStorage.getItem("accoung"))));
             toast.success(data.message)
             reset()
+            navigate("/login")
         },
         onError: error=> {
             console.log(error);
