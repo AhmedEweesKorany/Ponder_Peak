@@ -16,7 +16,7 @@ const Articles = () => {
         <ArticleCard className={"w-full md:w-[calc(50%-20px)] lg:w-[calc(33%-20px)]"} to="/article/22"/>
       </div>
       <Link to={"Articles"} className='flex items-center mx-auto gap-x-2 font-bold transition-all duration-200 hover:gap-x-5 text-primary border-2 border-primary px-6 py-3 mt-10'>
-        <span data-aos = {randomAnimation()}>
+        <span >
           More Articles
         </span>
         <FaArrowRight className='h-3 w-3'/>

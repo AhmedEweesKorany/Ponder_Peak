@@ -1,15 +1,14 @@
 import axios from "axios";
 
 
-const updateProfile =async ({name,email,oldPassword,id,newPassword})=>{
+const updateProfile =async ({token,userData})=>{
    try {
-   const {data} =   await axios.put("/api/users/updateProfile",{
-        name,
-        email,
-        id,
-        oldPassword,
-        newPassword
-    })
+    const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+   const {data} =   await axios.put("/api/users/updateProfile",userData,config)
     return data;
    } catch (error) {
     if(error.response && error.response.data.message) throw new Error(error.response.data.message)

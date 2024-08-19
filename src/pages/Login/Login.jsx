@@ -31,7 +31,7 @@ to extract the `password` property from the `data.user` object and store it in a
 new object called `filterdData`. */
             const {password,...filterdData} = data.user 
             localStorage.setItem("account",JSON.stringify({filterdData,token:data.token,message:data.message}))
-            dispatch(setUserInfo({filterdData,token:data.token,message:data.message}));
+            dispatch(setUserInfo(JSON.parse(localStorage.getItem("account"))));
             toast.success(data.message)
             reset()
         },

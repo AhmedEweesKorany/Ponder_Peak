@@ -23,7 +23,6 @@ const driverObj = driver({
     ]
   });
 
-
   const App = () => {
     // inti dark mode
     const [dark, setDark] = useState(localStorage.getItem('darkMode') || false);
