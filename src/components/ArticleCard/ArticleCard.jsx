@@ -2,8 +2,9 @@ import React from "react";
 import { images } from "../../constants";
 import { BsCheckLg } from "react-icons/bs";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
-const ArticleCard = ({ className,to }) => {
+const ArticleCard = ({ className,to,data }) => {
   /**
    * A functional component that renders an article card with an image and text content.
    *
@@ -19,19 +20,17 @@ const ArticleCard = ({ className,to }) => {
     >
 <Link to={to}>
 <img
-        src={images.post1}
+        src={ axios.defaults.baseURL + "/uploads/" + data?.avatar}
         alt="articleCardImg"
         className="w-full h-auto object-cover object-center"
       />
 </Link>
       <div className="p-5">
         <h2  className=" font-roboto font-bold text-x text-semiblack dark:text-white">
-          Feature of Work
+          {data?.title}
         </h2>
         <p  className="text-sm text-semiblack mt-3 dark:text-gray-400">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Cum corrupti
-          exercitationem quidem cumque doloribus. Sapiente ullam ipsam
-          reiciendis harum repudiandae!
+          {data?.body}
         </p>
         <div className="flex justify-between items-center mt-6">
           <div className="flex items-center gap-x-2">

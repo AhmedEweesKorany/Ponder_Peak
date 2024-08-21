@@ -9,6 +9,7 @@ import { getUserProfile, updateProfile } from "../../services/users";
 import ProfilePicture from "../../components/ProfilePicture/ProfilePicture";
 import { setUserInfo } from "../../store/reducers/userReducer";
 import toast from "react-hot-toast";
+import { BsCheckLg } from "react-icons/bs";
 const ProfilePage = () => {
     const dispatch = useDispatch()
     const navigate = useNavigate()
@@ -95,9 +96,19 @@ dispatch(setUserInfo(JSON.parse(localStorage.getItem("account"))));
           <h1 className=" text-center text-3xl sm:text-5xl font-bold">
             Profile Page
           </h1>
-          <div className="flex items-center justify-center"> 
+          <div className="flex items-center justify-center flex-col"> 
 
         <ProfilePicture avatar={userData?.userInfo?.filterdData?.avatar}/>
+
+<div className="flex gap-x-4 items-center"> 
+        <h1 className="text-3xl dark:text-white font-bold block">{userData?.userInfo?.filterdData?.name}</h1>
+{userData?.userInfo?.filterdData?.verified && <>
+          <span className="bg-green-100 p-2 rounded-full text-green-700" >
+                  <BsCheckLg />
+                  </span>
+        </>}
+</div>
+    
           </div>
           <form
             onSubmit={handleSubmit(submitHanlder)}
