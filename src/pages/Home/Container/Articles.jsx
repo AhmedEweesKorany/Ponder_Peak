@@ -22,10 +22,10 @@ const Articles = () => {
       <div className='flex flex-wrap  md:gap-x-5 gap-y-5 ' >
     
   {isLoading ? "loading ..." : data.posts.reverse().map((post,i)=>{
- if(i <= 3 ) return <ArticleCard data={post} className={"w-full md:w-[calc(50%-20px)] lg:w-[calc(33%-20px)]"} to="#" /> 
+ if(i <= 3 ) return <ArticleCard data={post} className={"w-full md:w-[calc(50%-20px)] lg:w-[calc(33%-20px)]"} to={`/article/${post?.slug}`} /> 
   })}       
       </div>
-      <Link to={"Articles"} className='flex items-center mx-auto gap-x-2 font-bold transition-all duration-200 hover:gap-x-5 text-primary border-2 border-primary px-6 py-3 mt-10'>
+      <Link to={"Articles"} className='flex items-center mx-auto gap-x-2 font-bold transition-all duration-200  hover:gap-x-5 text-primary border-2 border-primary px-6 py-3 mt-10'>
         <span >
           More Articles
         </span>

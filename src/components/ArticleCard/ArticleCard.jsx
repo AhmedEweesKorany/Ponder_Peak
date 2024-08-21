@@ -16,11 +16,12 @@ const ArticleCard = ({ className,to,data }) => {
 
   // format createdAt date 
 const date = new Date(data?.createdAt);
-
+console.log(data)
 // Extract day, month, and year
 const day = date.getUTCDate();
 const month = date.toLocaleString('default', { month: 'short' }); // Aug
 const year = date.getUTCFullYear();
+
 
 // Combine them into the desired format
 const formattedDate = `${day} ${month} ${year}`;
@@ -30,9 +31,9 @@ const formattedDate = `${day} ${month} ${year}`;
     >
 <Link to={to}>
 <img
-        src={ axios.defaults.baseURL + "/uploads/" + data?.avatar}
+        src={ data?.avatar ? axios.defaults.baseURL + "/uploads/" + data?.avatar : images.post1}
         alt="articleCardImg"
-        className="w-full h-auto object-cover object-center"
+        className="w-full h-[400px] object-cover  object-center"
       />
 </Link>
       <div className="p-5">

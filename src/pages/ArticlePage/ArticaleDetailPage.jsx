@@ -2,10 +2,13 @@ import React from "react";
 import MainLayout from "../../components/MainLayout/MainLayout";
 import BreadCrumb from "../../components/BreadCrumbs/BreadCrumb";
 import { images } from "../../constants";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import CommentForm from "../../components/Comments/CommentForm";
 import CommentContainer from "../../components/Comments/CommentContainer";
 import SocialMediaShare from "./SocialMediaShare";
+import { useQuery } from "@tanstack/react-query";
+import getPostBySlug from "../../services/posts/getPostBySlug";
+import axios from "axios";
 
 const BreadCrumbData = [{
   link:"/",
@@ -42,17 +45,33 @@ const latestArticles = [{
 
 const tags = ["medical","lifestyle","sport","music","cluture","food","Education"]
 const ArticaleDetailPage = () => {
+  const id = useParams().id
+  
+  const {data:post,isLoading,error} = useQuery({
+    queryKey:["singlePost"],
+    queryFn: ()=>{
+      return getPostBySlug({slug:id})
+    }
+    
+  })
+
+ 
   return (
     <MainLayout>
       <section className="mb-5 container mx-auto max-w-5xl px-5 lg:max-w-none  flex flex-col lg:px-28 py-5  lg:flex-row lg:gap-10 lg:justify-between lg:items-start   ">
-        <div>
+        <div className="min-w-[600px]">
         <article className="flex-1">
           <BreadCrumb data={BreadCrumbData}/>
         </article>
-        <img src={images.post1} className="rounded-xl w-full my-5" alt="Atricle image " />
-        <Link to={"/Article?category=selectedCategory"} className=" text-primary text-2xl px-1 hover:underline w-fit font-bold leading-8 tracking-widest">Education</Link>
-        <h1 className=" dark:text-white text-semiblack text-3xl font-bold my-5">Lorem ipsum dolor sit amet consectetur, adipisicing elit.</h1>
-        <p className="text-gray-600 dark:text-gray-400 tracking-wider leading-7">Lorem ipsum Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel, quam adipisci. Aspernatur vero at tenetur id similique atque et tempora repellat ad? Vel blanditiis molestias quis et itaque distinctio eum, quam aliquid totam dicta cupiditate saepe iusto expedita doloribus amet, reprehenderit omnis, veniam facilis ab. Voluptatem, soluta praesentium. Ipsam, a? dolor sit, amet consectetur adipisicing elit. Unde nihil eos deserunt sed amet blanditiis laborum autem necessitatibus quia aperiam accusamus modi, nobis perferendis accusantium eius quae. Provident, distinctio laudantium?</p>
+        <img src={post?.avatar ? axios.defaults.baseURL + "/uploads/" + post?.avatar : images.post1} className="rounded-xl w-full my-5" alt="Atricle image " />
+        <div className="flex gap-x-4 ">
+        {post?.tags.map((tag,i)=>{
+          return         <Link to={"/Article?category=selectedCategory"} className=" text-primary flex gap-x-6 text-2xl px-1 hover:underline w-fit font-bold leading-8 tracking-widest"> {tag.toUpperCase()}</Link>
+
+        })}
+        </div>
+        <h1 className=" dark:text-white text-semiblack text-3xl font-bold my-5">{post?.title}</h1>
+        <p className="text-gray-600 dark:text-gray-400 tracking-wider leading-7">{post?.body}</p>
 
         <CommentContainer loginnedUserId="a"/>
         </div>
@@ -61,7 +80,7 @@ const ArticaleDetailPage = () => {
 
 
  {/* latest articles  */}
-        <div className=" py-5 flex flex-col gap-8 px-5 mt-14 lg:mt-0 shadow-2xl shadow-blue-500/20 rounded-xl dark:shadow-primary/20">
+        <div className=" py-5 flex flex-col gap-8 px-5 mt-14 lg:mt-0 shadow-2xl shadow-blue-500/20 rounded-xl dark:shadow-primary/20 max-w-[700px]">
           <h1 className="text-3xl font-bold ">Latest Articles </h1>
           <div className="flex flex-row gap-5 flex-wrap ">
             {latestArticles.map((article,i)=> <div key={i} className="flex  gap-3 md:w-[300px] lg:w-[400px]">
