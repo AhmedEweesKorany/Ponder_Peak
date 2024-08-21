@@ -8,7 +8,7 @@ const getAllposts = async ({ token }) => {
           },
         };
 
-        const { data } = await axios.get("/api/posts/all", config);
+        const { data } = await axios.get("/api/posts", config);
         return data;
       } catch (error) {
         if (error.response && error.response.data.message)

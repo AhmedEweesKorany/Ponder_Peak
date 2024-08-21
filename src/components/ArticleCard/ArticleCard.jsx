@@ -14,6 +14,16 @@ const ArticleCard = ({ className,to,data }) => {
    * @returns {JSX.Element} - The rendered article card component.
    */
 
+  // format createdAt date 
+const date = new Date(data?.createdAt);
+
+// Extract day, month, and year
+const day = date.getUTCDate();
+const month = date.toLocaleString('default', { month: 'short' }); // Aug
+const year = date.getUTCFullYear();
+
+// Combine them into the desired format
+const formattedDate = `${day} ${month} ${year}`;
   return (
     <div
       className={`${className} rounded-xl overflow-hidden shadow-2xl shadow-blue-500/20 dark:shadow-primary/20`}
@@ -35,24 +45,26 @@ const ArticleCard = ({ className,to,data }) => {
         <div className="flex justify-between items-center mt-6">
           <div className="flex items-center gap-x-2">
             <img
-              src={images.postProfile1}
+              src={data?.user?.avatar ? axios.defaults.baseURL + "/uploads/" + data?.user?.avatar: images.postProfile1}
               alt=""
 
               className="w-[40px] object-conver rounded-full"
             />
             <div className="fex flex-col">
               <h4  className="font-bold italic text-semiblack text-sm dark:text-gray-300" >
-                Ahmed Ewees
+              {data?.user?.name}
               </h4>
-              <div className="flex items-center gap-x-2">
-                <span className="bg-green-100 p-2 rounded-full text-green-700" >
+            {data?.user?.verified &&
+                   <div className="flex items-center gap-x-2">
+                 <span className="bg-green-100 p-2 rounded-full text-green-700" >
                   <BsCheckLg />
                   </span>
                 <span >Verified Writer</span>
               </div>
+                }
             </div>
           </div>
-          <span >02 may</span>
+          <span >{formattedDate}</span>
         </div>
       </div>
     </div>

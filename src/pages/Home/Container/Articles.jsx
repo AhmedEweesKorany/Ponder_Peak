@@ -15,6 +15,7 @@ const Articles = () => {
     queryKey:["posts"]
   })
 
+
   return (
    <div className="container">
      <section className=' flex flex-col mx-auto px-5 py-10'>
