@@ -7,8 +7,9 @@ import CommentForm from "../../components/Comments/CommentForm";
 import CommentContainer from "../../components/Comments/CommentContainer";
 import SocialMediaShare from "./SocialMediaShare";
 import { useQuery } from "@tanstack/react-query";
-import getPostBySlug from "../../services/posts/getPostBySlug";
 import axios from "axios";
+import { getPostBySlug } from "../../services/posts";
+import { getPostComments } from "../../services/comments";
 
 const BreadCrumbData = [{
   link:"/",
@@ -55,25 +56,33 @@ const ArticaleDetailPage = () => {
     
   })
 
+  // console.log(post?._id)
+ const {data:comments,isLoading:commentIsloading,error:commentError} = useQuery({
+  queryKey:["comment"],
+  queryFn:()=>{
+    return getPostComments({id:post._id})
+  }
+ })
  
+
   return (
     <MainLayout>
       <section className="mb-5 container mx-auto max-w-5xl px-5 lg:max-w-none  flex flex-col lg:px-28 py-5  lg:flex-row lg:gap-10 lg:justify-between lg:items-start   ">
-        <div className="min-w-[600px]">
+        <div>
         <article className="flex-1">
           <BreadCrumb data={BreadCrumbData}/>
         </article>
         <img src={post?.avatar ? axios.defaults.baseURL + "/uploads/" + post?.avatar : images.post1} className="rounded-xl w-full my-5" alt="Atricle image " />
         <div className="flex gap-x-4 ">
         {post?.tags.map((tag,i)=>{
-          return         <Link to={"/Article?category=selectedCategory"} className=" text-primary flex gap-x-6 text-2xl px-1 hover:underline w-fit font-bold leading-8 tracking-widest"> {tag.toUpperCase()}</Link>
+          return         <Link key={i} to={"#"} className=" text-primary flex gap-x-6 text-2xl px-1 hover:underline w-fit font-bold leading-8 tracking-widest"> {tag.toUpperCase()}</Link>
 
         })}
         </div>
         <h1 className=" dark:text-white text-semiblack text-3xl font-bold my-5">{post?.title}</h1>
         <p className="text-gray-600 dark:text-gray-400 tracking-wider leading-7">{post?.body}</p>
 
-        <CommentContainer loginnedUserId="a"/>
+        <CommentContainer commentsData={comments} postId={post?._id}/>
         </div>
 
 {/* leave a comment  */}

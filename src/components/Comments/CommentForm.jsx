@@ -1,15 +1,34 @@
+import { useMutation, useQueryClient } from "@tanstack/react-query";
 import React, { useState } from "react";
+import toast from "react-hot-toast";
+import addNewComment from "../../services/comments/addNewComment";
+import { useSelector } from "react-redux";
 
-function CommentForm({formSubmitHandler}) {
+function CommentForm({postId}) {
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("Form submitted");
-    formSubmitHandler(comment);
+    mutate({content:comment})
     setComment("")
   };
 
+  const userData = useSelector(state=>state.user)
+  // console.log("postId from form",postId)
   const [comment,setComment] = useState("")
+  const queryClient = useQueryClient()
 
+  const {mutate,isPending} = useMutation({
+    mutationFn:({content})=>{
+      return addNewComment({content,postId,token:userData?.userInfo?.token})
+    },
+    onSuccess: (data)=>{
+      toast.success(data.message)
+      // console.log(data)
+      queryClient.invalidateQueries(["comment"])
+    },
+    onError: data =>{
+      toast.error(data.message)
+    }
+  })
   return (
     <form
       onSubmit={submitHandler}

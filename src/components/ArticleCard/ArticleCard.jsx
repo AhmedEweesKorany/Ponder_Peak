@@ -14,17 +14,7 @@ const ArticleCard = ({ className,to,data }) => {
    * @returns {JSX.Element} - The rendered article card component.
    */
 
-  // format createdAt date 
-const date = new Date(data?.createdAt);
-console.log(data)
-// Extract day, month, and year
-const day = date.getUTCDate();
-const month = date.toLocaleString('default', { month: 'short' }); // Aug
-const year = date.getUTCFullYear();
-
-
-// Combine them into the desired format
-const formattedDate = `${day} ${month} ${year}`;
+  
   return (
     <div
       className={`${className} rounded-xl overflow-hidden shadow-2xl shadow-blue-500/20 dark:shadow-primary/20`}
@@ -65,7 +55,12 @@ const formattedDate = `${day} ${month} ${year}`;
                 }
             </div>
           </div>
-          <span >{formattedDate}</span>
+          <span > {new Date(data.createdAt).toLocaleDateString("en-US",{
+    day:"numeric", 
+    month:"short",
+    hour:"numeric",
+    minute:"numeric"
+  })}</span>
         </div>
       </div>
     </div>

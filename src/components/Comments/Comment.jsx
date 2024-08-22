@@ -1,14 +1,14 @@
 import React from 'react'
 import { images } from '../../constants'
-import { FiEdit2, FiMessageSquare, FiTrash } from 'react-icons/fi'
+// import { FiEdit2, FiMessageSquare, FiTrash } from 'react-icons/fi'
+import axios from 'axios'
 
-const Comment = ({comment,loginnedUserId}) => {
-  const isUserLoggedIn = Boolean(loginnedUserId)
-  const commentEdit = loginnedUserId === comment.user._id
+const Comment = ({comment}) => {
+
   return (
     <div className='flex gap-x-3 bg-[#f2f4f5] p-3 rounded-lg dark:bg-transparent dark:border dark:border-gray-600'>
 
-      <img src={images.postProfile1} alt="user Profile " className='w-9 h-9 object-cover rounded-full' />
+      <img src={comment?.user?.avatar ? axios.defaults.baseURL + "/uploads/" + comment?.user?.avatar : images.postProfile1} alt="user Profile " className='w-9 h-9 object-cover rounded-full' />
       <div className='flex flex-col flex-1'>
 <h5 className='font-bold text-xs text-semiblack dark:text-white dark:font-bold'>
   {comment.user.name}
@@ -17,13 +17,13 @@ const Comment = ({comment,loginnedUserId}) => {
   {new Date(comment.createdAt).toLocaleDateString("en-US",{
     day:"numeric", 
     month:"short",
-    year:"numeric",
-    hour:"2-digit"
+    hour:"numeric",
+    minute:"numeric"
   })}
 </span>
-<p className='font-opensans mt-[10px] text-gray-500'>{comment.desc}</p>
+<p className='font-opensans mt-[10px] text-gray-500'>{comment.content}</p>
 <div className='flex gap-x-5 '>
-{isUserLoggedIn && (<>
+{/* {isUserLoggedIn && (<>
 <button className='flex gap-1 items-center text-gray-500 mt-[10px] hover:underline'>
   <FiMessageSquare />
   <span>reply</span>
@@ -38,7 +38,7 @@ const Comment = ({comment,loginnedUserId}) => {
   <FiTrash />
   <span>reply</span>
 </button>
-</>)}
+</>)} */}
 </div>
       </div>
     </div>
