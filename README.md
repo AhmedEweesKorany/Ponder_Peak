@@ -111,3 +111,111 @@ The coding phase involved implementing the design and functionality as planned.
   );
 
   export default Post;
+
+
+## Testing Phase
+
+Testing ensured that the blog app functions as expected and is free of major bugs. We used Postman to test the API endpoints.
+
+**API Testing with Postman**
+
+In this phase, we performed various tests on the API endpoints to verify their functionality and correctness. Below are some examples of how we tested different routes using Postman.
+
+### Endpoints Tested
+
+1. **Get All Posts**
+
+   - **Request Type:** GET
+   - **Endpoint:** `/api/posts`
+   - **Description:** Retrieves a list of all blog posts.
+   - **Postman Request:**
+     ![Get All Posts Request](path/to/get-all-posts-request.png)
+   - **Expected Response:**
+     ```json
+     [
+       {
+         "id": "1",
+         "title": "First Post",
+         "content": "This is the content of the first post."
+       },
+       {
+         "id": "2",
+         "title": "Second Post",
+         "content": "This is the content of the second post."
+       }
+     ]
+     ```
+
+2. **Create a New Post**
+
+   - **Request Type:** POST
+   - **Endpoint:** `/api/posts`
+   - **Description:** Creates a new blog post.
+   - **Postman Request:**
+     ![Create New Post Request](path/to/create-new-post-request.png)
+   - **Request Body:**
+     ```json
+     {
+       "title": "New Post",
+       "content": "This is the content of the new post."
+     }
+     ```
+   - **Expected Response:**
+     ```json
+     {
+       "id": "3",
+       "title": "New Post",
+       "content": "This is the content of the new post."
+     }
+     ```
+
+3. **Update a Post**
+
+   - **Request Type:** PUT
+   - **Endpoint:** `/api/posts/:id`
+   - **Description:** Updates an existing blog post by ID.
+   - **Postman Request:**
+     ![Update Post Request](path/to/update-post-request.png)
+   - **Request Body:**
+     ```json
+     {
+       "title": "Updated Post Title",
+       "content": "Updated content of the post."
+     }
+     ```
+   - **Expected Response:**
+     ```json
+     {
+       "id": "1",
+       "title": "Updated Post Title",
+       "content": "Updated content of the post."
+     }
+     ```
+
+4. **Delete a Post**
+
+   - **Request Type:** DELETE
+   - **Endpoint:** `/api/posts/:id`
+   - **Description:** Deletes a blog post by ID.
+   - **Postman Request:**
+     ![Delete Post Request](path/to/delete-post-request.png)
+   - **Expected Response:**
+     ```json
+     {
+       "message": "Post deleted successfully."
+     }
+     ```
+
+### Postman Collection
+
+For convenience, you can import the Postman collection that contains all the API endpoints for testing. [Download Postman Collection](path/to/postman-collection.json)
+
+**Testing Results:**
+
+- **Successful Responses:**
+  ![Successful Responses](path/to/successful-responses.png)
+
+- **Error Responses:**
+  ![Error Responses](path/to/error-responses.png)
+
+By following these steps and using the provided Postman collection, you can effectively test the blog app's API endpoints to ensure they perform as expected.
