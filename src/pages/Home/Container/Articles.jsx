@@ -10,7 +10,7 @@ const Articles = () => {
   const userData = useSelector(state=>state.user)
   const {data,isLoading,error} = useQuery({
     queryFn:()=>{
-      return getAllposts({token:userData.userInfo.token})
+      return getAllposts()
     },
     queryKey:["posts"]
   })

@@ -5,6 +5,7 @@ import { addNewComment, getPostComments } from "../../services/comments";
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { useSelector } from "react-redux";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 export default function CommentContainer({ className, postId }) {
   // console.log(post?._id)
   const {
@@ -17,11 +18,17 @@ export default function CommentContainer({ className, postId }) {
       return getPostComments({ id: postId });
     },
   });
-
+  const navigate = useNavigate()
   const submitHandler = (e) => {
     e.preventDefault();
-    mutate({ content: comment });
-    setComment("");
+    if(userData.userInfo){
+      mutate({ content: comment });
+
+      setComment("");
+    }else{
+      toast.error("You must login first")
+      navigate("/login")
+    }
   };
 
   const userData = useSelector(state=>state.user)

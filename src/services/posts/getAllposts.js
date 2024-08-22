@@ -1,14 +1,9 @@
 import axios from "axios";
 
-const getAllposts = async ({ token }) => {
+const getAllposts = async () => {
     try {
-        const config = {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        };
-
-        const { data } = await axios.get("/api/posts", config);
+       
+        const { data } = await axios.get("/api/posts");
         return data;
       } catch (error) {
         if (error.response && error.response.data.message)
