@@ -2,9 +2,30 @@ import React from 'react'
 import { images } from '../../constants'
 // import { FiEdit2, FiMessageSquare, FiTrash } from 'react-icons/fi'
 import axios from 'axios'
+import { useSelector } from 'react-redux'
+import { FiEdit2, FiTrash } from 'react-icons/fi'
+import { useMutation, useQueryClient } from '@tanstack/react-query'
+import toast from 'react-hot-toast'
+import { deleteComment } from '../../services/comments'
 
 const Comment = ({comment}) => {
-
+  const userData = useSelector(state=>state.user)
+  const queryclient =  useQueryClient()
+  const {mutate,isPending} = useMutation({
+    mutationFn:()=>{
+      return deleteComment({id:comment._id,token:userData.userInfo.token})
+    },
+    onSuccess:data=>{
+      toast.success(data.message)
+      queryclient.invalidateQueries(["comment"])
+    },
+    onError:data=>{
+      toast.error(data.message)
+    }
+  })
+  const handleDeleteComment = ()=>{
+    mutate()
+  }
   return (
     <div className='flex gap-x-3 bg-[#f2f4f5] p-3 rounded-lg dark:bg-transparent dark:border dark:border-gray-600'>
 
@@ -29,16 +50,17 @@ const Comment = ({comment}) => {
   <span>reply</span>
 </button>
 </>)}
-{commentEdit && (<>
+ */}
+{userData?.userInfo?.filterdData._id === comment?.user?._id && (<>
   <button className='flex gap-1 items-center text-gray-500 mt-[10px] hover:underline'>
   <FiEdit2 />
-  <span>reply</span>
+  <span>Edit</span>
 </button>
 <button className='flex gap-1 items-center text-gray-500 mt-[10px] hover:underline'>
   <FiTrash />
-  <span>reply</span>
+  <button disabled={isPending} onClick={handleDeleteComment}>Delete</button>
 </button>
-</>)} */}
+</>)}
 </div>
       </div>
     </div>

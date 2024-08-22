@@ -3,7 +3,6 @@ import MainLayout from "../../components/MainLayout/MainLayout";
 import BreadCrumb from "../../components/BreadCrumbs/BreadCrumb";
 import { images } from "../../constants";
 import { Link, useParams } from "react-router-dom";
-import CommentForm from "../../components/Comments/CommentForm";
 import CommentContainer from "../../components/Comments/CommentContainer";
 import SocialMediaShare from "./SocialMediaShare";
 import { useQuery } from "@tanstack/react-query";
@@ -56,13 +55,7 @@ const ArticaleDetailPage = () => {
     
   })
 
-  // console.log(post?._id)
- const {data:comments,isLoading:commentIsloading,error:commentError} = useQuery({
-  queryKey:["comment"],
-  queryFn:()=>{
-    return getPostComments({id:post._id})
-  }
- })
+
  
 
   return (
@@ -82,7 +75,7 @@ const ArticaleDetailPage = () => {
         <h1 className=" dark:text-white text-semiblack text-3xl font-bold my-5">{post?.title}</h1>
         <p className="text-gray-600 dark:text-gray-400 tracking-wider leading-7">{post?.body}</p>
 
-        <CommentContainer commentsData={comments} postId={post?._id}/>
+        <CommentContainer postId={post?._id}/>
         </div>
 
 {/* leave a comment  */}

@@ -85,9 +85,13 @@ new object called `filterdData`. */
               <input
                 {...register("name", {
                   required: "Name is required",
-                  pattern: {
-                    value: /^[A-Za-z]+$/,
-                    message: "Name can only contain letters",
+                  minLength: {
+                    value: 3,
+                    message: "Name must be at least 3 characters",
+                  },
+                  maxLength: {
+                    value: 20,
+                    message: "Name must be at most 20 characters",
                   },
                 })}
                 placeholder="Enter Name"
