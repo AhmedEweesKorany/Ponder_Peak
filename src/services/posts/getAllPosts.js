@@ -1,10 +1,10 @@
 import axios from "axios";
 
-const getAllposts = async () => {
+const getAllPosts = async () => {
     try {
        
         const { data } = await axios.get("/api/posts");
-        return data;
+        return data.posts;
       } catch (error) {
         if (error.response && error.response.data.message)
           throw new Error(error.response.data.message);
@@ -12,4 +12,4 @@ const getAllposts = async () => {
       }
 };
 
-export default getAllposts;
+export default getAllPosts;

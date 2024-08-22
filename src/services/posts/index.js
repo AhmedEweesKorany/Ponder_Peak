@@ -1,2 +1,5 @@
-export {default as getAllposts} from "./getAllposts"
+export {default as getAllPosts} from "./getAllPosts"
 export {default as getPostBySlug} from "./getPostBySlug"
+export {default as createPost} from "./createPost"
+export {default as updatePost} from "./updatePost"
+export {default as deletePost} from "./deletePost"

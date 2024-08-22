@@ -69,7 +69,7 @@ const Navbar = () => {
            </button>
            <div className={`${loggedIndropdown?"block":"hidden"} lg:hidden transition-all duration-500 pt-4 lg:absolute lg:top-0 lg:bottom-0  lg:transform lg:translate-y-full lg:group-hover:block w-max`}>
             <div className="flex w-[120px] gap-3 justify-center items-center flex-col bg-gray-700 sm:bg-white z-[99] sm:z-0 rounded-lg shadow-lg dark:bg-gray-900 dark:text-white dark:shadow-primary p-2">
-
+            <Link  className="w-100 hover:underline"to={"/dashboard"}>{userData.userInfo.filterdData.admin ? "Admin Dashboard":"Dashboard"}</Link>
             <Link  className="w-100 hover:underline"to={"/profile"}>Profile</Link>
             <Link  className="w-100 hover:underline" onClick={handleLogout}>Logout</Link>
 

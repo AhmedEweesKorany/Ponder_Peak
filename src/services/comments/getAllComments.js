@@ -1,10 +1,14 @@
 import axios from "axios";
 
-const getPostComments = async ({ id }) => {
+const getAllComments = async ({token}) => {
     try {
-      
+      const config = {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
 
-        const { data } = await axios.get(`/api/comments/post/${id}`);
+        const { data } = await axios.get(`/api/comments/all`,config);
         return data.comments;
       } catch (error) {
         if (error.response && error.response.data.message)
@@ -13,4 +17,4 @@ const getPostComments = async ({ id }) => {
       }
 };
 
-export default getPostComments;
+export default getAllComments;

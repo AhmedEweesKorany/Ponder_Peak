@@ -14,6 +14,12 @@ import Login from './pages/Login/Login';
 import ProfilePage from './pages/profilePage/ProfilePage';
 import Aos from 'aos';
 import 'aos/dist/aos.css';
+import AdminLayout from './pages/admin/AdminLayout';
+import Admin from './pages/admin/screens/Admin';
+import ManagePosts from './pages/admin/screens/posts/ManagePosts';
+import EditPost from './pages/admin/screens/posts/EditPost';
+import Comments from './pages/admin/screens/comments/Comments';
+import Users from './pages/admin/screens/users/Users';
 const driverObj = driver({
     showProgress: true,
     steps: [
@@ -73,6 +79,13 @@ mode functionality of the application. */}
 <Route element={<Login/>} path='/login'/>
 <Route element={<ProfilePage/>} path='/profile'/>
 <Route element={<NotFound/>} path='*'/>
+<Route path="/dashboard" element={<AdminLayout />}>
+          <Route index element={<Admin />} />
+          <Route path="comments" element={<Comments />} />
+          <Route path="posts/manage" element={<ManagePosts />} />
+          <Route path="posts/manage/edit/:slug" element={<EditPost  />} />
+          <Route path="users/manage" element={<Users />} />
+        </Route>
 
     </Routes>
 

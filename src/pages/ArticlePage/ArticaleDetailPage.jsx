@@ -7,7 +7,7 @@ import CommentContainer from "../../components/Comments/CommentContainer";
 import SocialMediaShare from "./SocialMediaShare";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { getPostBySlug } from "../../services/posts";
+import { getAllPosts, getPostBySlug } from "../../services/posts";
 import { getPostComments } from "../../services/comments";
 
 const BreadCrumbData = [{
@@ -56,7 +56,13 @@ const ArticaleDetailPage = () => {
   })
 
 
- 
+ const {data:latestPosts,isLoading:latestPostsLoading,error:latestPostsError} = useQuery({
+  queryFn:()=>{
+    return getAllPosts()
+  },
+  queryKey:["latestPosts"]
+ })
+
 
   return (
     <MainLayout>
@@ -84,14 +90,22 @@ const ArticaleDetailPage = () => {
  {/* latest articles  */}
         <div className=" py-5 flex flex-col gap-8 px-5 mt-14 lg:mt-0 shadow-2xl shadow-blue-500/20 rounded-xl dark:shadow-primary/20 max-w-[700px]">
           <h1 className="text-3xl font-bold ">Latest Articles </h1>
-          <div className="flex flex-row gap-5 flex-wrap ">
-            {latestArticles.map((article,i)=> <div key={i} className="flex  gap-3 md:w-[300px] lg:w-[400px]">
-              <img src={article.img} alt="" width={100} className="rounded-2xl object-cover" />
-              <div className="px-2 ">
-                <h1 className=" font-bold">{article.title}</h1>
-                <p className="text-gray-500 ">{article.data}</p>
-              </div>
-            </div>)}
+          <div className="flex flex-row gap-5 flex-wrap items-center ">
+            {latestPosts?.filter(article => article.slug !== id).map((article,i)=> {
+              if(i <= 4){
+                return <div key={i} className="flex items-center  gap-3 md:w-[300px] lg:w-[400px]">
+
+                <a href={`/article/${article.slug}`} className="flex items-center gap-3">
+                <img src={article?.avatar ? axios.defaults.baseURL + "/uploads/" + article?.avatar : images.post1} alt="" width={100} className="rounded-2xl object-cover width-[100px] h-[100px]" />
+                
+                 </a>
+                              <div className="px-2 ">
+                                <h1 className=" font-bold">{article.title}</h1>
+                                <p className="text-gray-500 ">{article.caption}</p>
+                              </div>
+                            </div>
+              }
+            })}
           </div>
           <div className="flex flex-wrap flex-col gap-5 py-5 capitalize">
             <h1 className="text-3xl font-bold  ">tags</h1>
