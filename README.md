@@ -129,7 +129,7 @@ In this phase, we performed various tests on the API endpoints to verify their f
    - **Endpoint:** `/api/posts`
    - **Description:** Retrieves a list of all blog posts.
    - **Postman Request:**
-     ![Get All Posts Request](path/to/get-all-posts-request.png)
+    ![alt text](image-9.png) 
    - **Expected Response:**
      ```json
      [
@@ -152,7 +152,7 @@ In this phase, we performed various tests on the API endpoints to verify their f
    - **Endpoint:** `/api/posts`
    - **Description:** Creates a new blog post.
    - **Postman Request:**
-     ![Create New Post Request](path/to/create-new-post-request.png)
+     ![alt text](image-10.png)
    - **Request Body:**
      ```json
      {
@@ -175,7 +175,7 @@ In this phase, we performed various tests on the API endpoints to verify their f
    - **Endpoint:** `/api/posts/:id`
    - **Description:** Updates an existing blog post by ID.
    - **Postman Request:**
-     ![Update Post Request](path/to/update-post-request.png)
+     ![alt text](image-11.png)
    - **Request Body:**
      ```json
      {
@@ -198,24 +198,24 @@ In this phase, we performed various tests on the API endpoints to verify their f
    - **Endpoint:** `/api/posts/:id`
    - **Description:** Deletes a blog post by ID.
    - **Postman Request:**
-     ![Delete Post Request](path/to/delete-post-request.png)
+    ![alt text](image-12.png) 
    - **Expected Response:**
      ```json
      {
        "message": "Post deleted successfully."
      }
+For convenience, you can import the Postman collection that contains all the API endpoints for testing. [Download Postman Collection](path/to/postman-collection.json)
      ```
 
 ### Postman Collection
 
-For convenience, you can import the Postman collection that contains all the API endpoints for testing. [Download Postman Collection](path/to/postman-collection.json)
 
 **Testing Results:**
 
 - **Successful Responses:**
-  ![Successful Responses](path/to/successful-responses.png)
+  ![alt text](image-13.png)
 
 - **Error Responses:**
-  ![Error Responses](path/to/error-responses.png)
+  ![alt text](image-14.png)
 
 By following these steps and using the provided Postman collection, you can effectively test the blog app's API endpoints to ensure they perform as expected.
