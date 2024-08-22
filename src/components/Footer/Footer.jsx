@@ -6,7 +6,7 @@ import { randomAnimation } from '../../services/ui/randonAnimation';
 const Footer = () => {
   return (
  <section className='bg-semiblack py-10 dark:bg-transparent relative'>
-  <div className='absolute hidden dark:block w-full top-0 h-[1px] bg-gray-400 '></div>
+  <div className='absolute hidden dark:block w-full top-0 h-[1px] bg-gray-400 z-[22]'></div>
      <div className=" text-white  container  flex flex-col sm:flex-row justify-between items-center">
 
 <div className="grid grid-cols-2 place-items-center sm:place-items-start  lg:grid-cols-4 lg:w-full  gap-20 sm:order-last w-96 ">

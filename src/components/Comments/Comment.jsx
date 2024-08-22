@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { images } from '../../constants'
 // import { FiEdit2, FiMessageSquare, FiTrash } from 'react-icons/fi'
 import axios from 'axios'
@@ -7,9 +7,11 @@ import { FiEdit2, FiTrash } from 'react-icons/fi'
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import toast from 'react-hot-toast'
 import { deleteComment } from '../../services/comments'
+import FormModal from '../FormModal/FormModal'
 
 const Comment = ({comment}) => {
   const userData = useSelector(state=>state.user)
+  const [update,setUpdate] = useState(false)
   const queryclient =  useQueryClient()
   const {mutate,isPending} = useMutation({
     mutationFn:()=>{
@@ -28,7 +30,7 @@ const Comment = ({comment}) => {
   }
   return (
     <div className='flex gap-x-3 bg-[#f2f4f5] p-3 rounded-lg dark:bg-transparent dark:border dark:border-gray-600'>
-
+      {update&& <FormModal comment={comment} setUpdate={setUpdate} />}
       <img src={comment?.user?.avatar ? axios.defaults.baseURL + "/uploads/" + comment?.user?.avatar : images.postProfile1} alt="user Profile " className='w-9 h-9 object-cover rounded-full' />
       <div className='flex flex-col flex-1'>
 <h5 className='font-bold text-xs text-semiblack dark:text-white dark:font-bold'>
@@ -54,7 +56,7 @@ const Comment = ({comment}) => {
 {userData?.userInfo?.filterdData._id === comment?.user?._id && (<>
   <button className='flex gap-1 items-center text-gray-500 mt-[10px] hover:underline'>
   <FiEdit2 />
-  <span>Edit</span>
+  <button onClick={()=>setUpdate(true)} id='commentUpdate'>Edit</button>
 </button>
 <button className='flex gap-1 items-center text-gray-500 mt-[10px] hover:underline'>
   <FiTrash />
