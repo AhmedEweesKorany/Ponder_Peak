@@ -8,7 +8,7 @@ const makeAdmin = async ({ token,id }) => {
           },
         };
 
-        const { data } = await axios.delete(`/api/users/makeAdmin/${id}`, config);
+        const { data } = await axios.put(`/api/users/makeAdmin/${id}`, config);
         return data;
       } catch (error) {
         if (error.response && error.response.data.message)

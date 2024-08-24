@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const verifiedUser = async ({ token,id }) => {
+const verifiedUser = async ({ id,token }) => {
     try {
         const config = {
           headers: {
@@ -8,7 +8,7 @@ const verifiedUser = async ({ token,id }) => {
           },
         };
 
-        const { data } = await axios.delete(`/api/users/makeVreified/${id}`, config);
+        const { data } = await axios.put(`/api/users/makeVreified/${id}`, config);
         return data;
       } catch (error) {
         if (error.response && error.response.data.message)

@@ -36,6 +36,22 @@ During the designing phase, we focused on the overall user experience and interf
 - **Profile Page**
 ![alt text](image-6.png)
 
+- **Create Post Page**
+![alt text](image-15.png)
+
+- **Edit Post Page**
+![alt text](image-16.png)
+
+- **Manage Post Page**
+![alt text](image-17.png)
+
+- **Mange Users Page**
+![alt text](image-18.png)
+
+
+- **Manage Commments Page**
+![alt text](image-19.png)
+
 
 **Design Tools Used:**
 

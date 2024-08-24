@@ -167,7 +167,7 @@ console.log(usersData)
        onClick={() => {
          verifiedHandler({
            id: user?._id,
-           token: userData.userInfo.token,
+           token: userData?.userInfo?.token,
          });
        }}
      >
@@ -180,7 +180,7 @@ console.log(usersData)
        onClick={() => {
         adminHandler({
            id: user?._id,
-           token: userData.userInfo.token,
+           token: userData?.userInfo?.token,
          });
        }}
      >
