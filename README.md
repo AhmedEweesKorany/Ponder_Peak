@@ -10,6 +10,7 @@ This is a blog application built using the MERN stack, with a focus on creating 
 - [Planning Phase](#planning-phase)
 - [Coding Phase](#coding-phase)
 - [Testing Phase](#testing-phase)
+- [Deployment Phase](#Deployment-phase)
 
 ## Designing Phase
 
@@ -219,3 +220,34 @@ For convenience, you can import the Postman collection that contains all the API
   ![alt text](image-14.png)
 
 By following these steps and using the provided Postman collection, you can effectively test the blog app's API endpoints to ensure they perform as expected.
+
+
+## Deployment Phase of My Blog App
+
+### Project Overview
+
+I recently completed the deployment of my **Blog App**. This project consists of a **front-end** built with React and styled using **TailwindCSS**, which can be accessed [here](https://blog-app-frontend-black.vercel.app/).
+
+### Deployment Process
+
+#### Front-End Deployment: Vercel
+
+1. **Hosting Service**: I used [Vercel](https://vercel.com/) for deploying the front-end of my blog app. Vercel provides seamless integration with GitHub repositories, making it an ideal platform for deploying React apps.
+   
+2. **Steps to Deploy**:
+   - First, I pushed the latest version of the code to my **GitHub** repository.
+   - Connected the repository to **Vercel**.
+   - Vercel automatically detected the **React.js** framework and provided default settings for building and deploying the app.
+   - I configured environment variables in Vercel if needed.
+   - After deployment, the app was live on [https://blog-app-frontend-black.vercel.app/](https://blog-app-frontend-black.vercel.app/).
+
+3. **Advantages of Vercel**:
+   - Automatic builds and previews for every push to the GitHub repository.
+   - Fast and global CDN which ensures my app loads quickly from any location.
+   - Integrated SSL for secure HTTPS access.
+
+### Conclusion
+
+The deployment process was smooth thanks to Vercel’s automation and easy-to-use interface. My blog app is now live and ready to be explored! Check it out [here](https://blog-app-frontend-black.vercel.app/).
+
+
