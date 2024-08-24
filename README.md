@@ -222,7 +222,7 @@ For convenience, you can import the Postman collection that contains all the API
 By following these steps and using the provided Postman collection, you can effectively test the blog app's API endpoints to ensure they perform as expected.
 
 
-## Deployment Phase of My Blog App
+## Deployment Phase 
 
 ### Project Overview
 
