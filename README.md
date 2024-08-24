@@ -130,6 +130,16 @@ The coding phase involved implementing the design and functionality as planned.
   export default Post;
 
 
+- **Node js Code Example:**
+
+![alt text](image-20.png)
+
+-- **MongoDB Code Example:**
+![alt text](image-23.png)
+
+- **Update profile picture frontend code:**
+![alt text](image-21.png)
+![alt text](image-22.png)
 ## Testing Phase
 
 Testing ensured that the blog app functions as expected and is free of major bugs. We used Postman to test the API endpoints.
