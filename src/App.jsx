@@ -20,6 +20,7 @@ import ManagePosts from './pages/admin/screens/posts/ManagePosts';
 import EditPost from './pages/admin/screens/posts/EditPost';
 import Comments from './pages/admin/screens/comments/Comments';
 import Users from './pages/admin/screens/users/Users';
+import AddNewPost from './pages/admin/screens/posts/AddPost';
 const driverObj = driver({
     showProgress: true,
     steps: [
@@ -84,6 +85,7 @@ mode functionality of the application. */}
           <Route path="comments" element={<Comments />} />
           <Route path="posts/manage" element={<ManagePosts />} />
           <Route path="posts/manage/edit/:slug" element={<EditPost  />} />
+          <Route path="posts/manage/create" element={<AddNewPost  />} />
           <Route path="users/manage" element={<Users />} />
         </Route>
 

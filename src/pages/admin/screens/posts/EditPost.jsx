@@ -48,7 +48,7 @@ const EditPost = () => {
     onSuccess: (data) => {
       queryClient.invalidateQueries(["blog", slug]);
       toast.success("Post is updated");
-      navigate(`/`);
+      navigate(`/dashboard/posts/manage`);
     },
     onError: (error) => {
       toast.error(error.message);
