@@ -51,7 +51,7 @@ const {
       {postsData?.filter(post => post?.user?._id === userData.userInfo.filterdData._id).length > 0 ?    <table className="min-w-full leading-normal">
         <thead>
           <tr>
-            {["image","title","body","date","actions"].map((title, index) => (
+            {["image","title","body","date","last update","actions"].map((title, index) => (
               <th
                 key={index}
                 scope="col"
@@ -111,6 +111,18 @@ const {
        })}
      </p>
    </td>
+
+   <td className="px-5 py-5 text-sm bg-white border-b border-gray-200">
+     <p className="text-gray-900 whitespace-no-wrap">
+       {new Date(post?.updatedAt).toLocaleDateString("en-US", {
+         day: "2-digit",
+         month: "2-digit",
+         year: "2-digit",
+         hour: "numeric",
+         minute: "numeric",
+       })}
+     </p>
+   </td>
    <td className="px-5 py-5 text-sm bg-white border-b border-gray-200 space-x-5">
      <button
        disabled={isLoadingDeletePost}
@@ -126,8 +138,8 @@ const {
        Delete
      </button>
 
-     <Link
-     to={`/dashboard/posts/manage/edit/${post?.slug}`}
+     <a
+     href={`/dashboard/posts/manage/edit/${post?.slug}`}
        disabled={isLoadingDeletePost}
        type="button"
        className=" text-green-600 hover:text-green-900 disabled:opacity-70 disabled:cursor-not-allowed"
@@ -135,7 +147,7 @@ const {
       
        Edit
 
-     </Link>
+     </a>
 
    </td>
    </tr>

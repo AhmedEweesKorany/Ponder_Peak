@@ -1,5 +1,5 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import CreatableSelect from "react-select/creatable";
 import { getPostBySlug, updatePost } from "../../../../services/posts";
 import {  useParams, useNavigate } from "react-router-dom";
@@ -9,31 +9,31 @@ import { stables } from "../../../../constants";
 import { HiOutlineCamera } from "react-icons/hi";
 import { toast } from "react-hot-toast";
 import { useSelector } from "react-redux";
-import Editor from "../../../../components/editor/Editor";
 
 const EditPost = () => {
   const { slug } = useParams();
   const queryClient = useQueryClient();
   const navigate = useNavigate();
-  const userState = useSelector((state) => state.user);
-  const [initialPhoto, setInitialPhoto] = useState(null);
-  const [photo, setPhoto] = useState(null);
-  const [body, setBody] = useState(null);
-  const [title, setTitle] = useState("");
-  const [tags, setTags] = useState(null);
   const [postSlug, setPostSlug] = useState(slug);
-  const [caption, setCaption] = useState("");
+  const userState = useSelector((state) => state.user);
+  const [initialavatar, setInitialavatar] = useState(null);
+
+  const [curData,setCurData] = useState({
+    avatar:null,
+    body:null,
+    title:null,
+    caption:null,
+    
+    tags:null
+  })
+
 
   const { data, isLoading, isError } = useQuery({
     queryFn: () => getPostBySlug({ slug }),
-    queryKey: ["blog", slug],
-    onSuccess: (data) => {
-      setInitialPhoto(data?.photo);
-      setTitle(data?.title);
-      setTags(data?.tags);
-    },
-    refetchOnWindowFocus: false,
+    queryKey: ["blog"],
+    // refetchOnWindowFocus: false,
   });
+  if(curData) console.log(curData)
   const {
     mutate: mutateUpdatePostDetail,
     isLoading: isLoadingUpdatePostDetail,
@@ -56,33 +56,36 @@ const EditPost = () => {
     },
   });
 
+
   const handleFileChange = (e) => {
     const file = e.target.files[0];
-    setPhoto(file);
+    setCurData({...curData,avatar:file})
   };
 
   const handleUpdatePost = async () => {
     let updatedData = new FormData();
 
-    if (!initialPhoto && photo) {
-      updatedData.append("postPicture", photo);
-    } else if (initialPhoto && !photo) {
+    if (!initialavatar && curData.avatar) {
+      updatedData.append("postImage", curData.avatar);
+    } else if (initialavatar && !curData.avatar) {
       const urlToObject = async (url) => {
         let reponse = await fetch(url);
         let blob = await reponse.blob();
-        const file = new File([blob], initialPhoto, { type: blob.type });
+        const file = new File([blob], initialavatar, { type: blob.type });
         return file;
       };
       const picture = await urlToObject(
-        stables.UPLOAD_FOLDER_BASE_URL + data?.photo
+        stables.UPLOAD_FOLDER_BASE_URL + data?.avatar
       );
 
-      updatedData.append("postPicture", picture);
+      updatedData.append("postImage", picture);
     }
 
+    const curTextOnly = curData
+    delete curTextOnly.avatar
     updatedData.append(
       "document",
-      JSON.stringify({ body, title, tags, slug: postSlug, caption })
+      JSON.stringify({  slug: postSlug, ...curTextOnly })
     );
 
     mutateUpdatePostDetail({
@@ -94,8 +97,12 @@ const EditPost = () => {
 
   const handleDeleteImage = () => {
     if (window.confirm("Do you want to delete your Post picture?")) {
-      setInitialPhoto(null);
-      setPhoto(null);
+      data.avatar = null;
+      setInitialavatar(null);
+      setCurData({
+        ...curData,
+        avatar: null,
+      });
     }
   };
 
@@ -110,17 +117,17 @@ const EditPost = () => {
       ) : (
         <section className="container mx-auto max-w-5xl flex flex-col px-5 py-5 lg:flex-row lg:gap-x-5 lg:items-start">
           <article className="flex-1">
-            <label htmlFor="postPicture" className="w-full cursor-pointer">
-              {photo ? (
+            <label htmlFor="postImage" className="w-full cursor-pointer">
+              {curData.avatar ? (
                 <img
-                  src={URL.createObjectURL(photo)}
-                  alt={data?.title}
+                  src={URL.createObjectURL(curData?.avatar)}
+                  alt="uploaded img"
                   className="rounded-xl w-full"
                 />
-              ) : initialPhoto ? (
+              ) : data?.avatar ? (
                 <img
-                  src={stables.UPLOAD_FOLDER_BASE_URL + data?.photo}
-                  alt={data?.title}
+                  src={stables.UPLOAD_FOLDER_BASE_URL + data?.avatar}
+                  alt="initaphot "
                   className="rounded-xl w-full"
                 />
               ) : (
@@ -132,7 +139,8 @@ const EditPost = () => {
             <input
               type="file"
               className="sr-only"
-              id="postPicture"
+            
+              id="postImage"
               onChange={handleFileChange}
             />
             <button
@@ -149,9 +157,9 @@ const EditPost = () => {
               </label>
               <input
                 id="title"
-                value={title}
+                defaultValue={data?.title}
                 className="d-input d-input-bordered border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
-                onChange={(e) => setTitle(e.target.value)}
+                onChange={(e) => setCurData({...curData,title:e.target.value})}
                 placeholder="title"
               />
             </div>
@@ -161,9 +169,9 @@ const EditPost = () => {
               </label>
               <input
                 id="caption"
-                value={caption}
+                defaultValue={data?.caption}
                 className="d-input d-input-bordered border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
-                onChange={(e) => setCaption(e.target.value)}
+                onChange={(e) => setCurData({...curData,caption:e.target.value})}
                 placeholder="caption"
               />
             </div>
@@ -179,7 +187,7 @@ const EditPost = () => {
                   setPostSlug(e.target.value.replace(/\s+/g, "-").toLowerCase())
                 }
                 placeholder="post slug"
-              />
+              />  
             </div>
           
             <div className="mb-5 mt-2">
@@ -194,21 +202,24 @@ const EditPost = () => {
                   }))}
                   isMulti
                   onChange={(newValue) =>
-                    setTags(newValue.map((item) => item.value))
+                    setCurData({...curData,tags:newValue.map((item) => item.value)})
                   }
                   className="relative z-20"
                 />
               )}
             </div>
-            <div className="w-full">
+            <div className="w-full ">
               {isPostDataLoaded && (
-                <Editor
-                  content={data?.body}
-                  editable={true}
-                  onDataChange={(data) => {
-                    setBody(data);
+                <textarea
+                  defaultValue={data?.body}
+                  onChange={(data) => {
+                    setCurData({...curData,body:data.target.value});
                   }}
-                />
+
+                  className="d-input  d-input-bordered border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-semiblack w-full"
+                >
+
+                </textarea>
               )}
             </div>
             <button

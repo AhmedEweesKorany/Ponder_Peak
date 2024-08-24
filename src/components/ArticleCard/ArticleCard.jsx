@@ -31,7 +31,7 @@ const ArticleCard = ({ className,to,data }) => {
           {data?.title}
         </h2>
         <p  className="text-sm text-semiblack mt-3 dark:text-gray-400">
-          {data?.body}
+          {data?.caption}
         </p>
         <div className="flex justify-between items-center mt-6">
           <div className="flex items-center gap-x-2">
