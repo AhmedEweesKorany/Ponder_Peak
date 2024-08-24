@@ -21,6 +21,7 @@ import EditPost from './pages/admin/screens/posts/EditPost';
 import Comments from './pages/admin/screens/comments/Comments';
 import Users from './pages/admin/screens/users/Users';
 import AddNewPost from './pages/admin/screens/posts/AddPost';
+import ComingSoon from './pages/ComingSoon/ComingSoon';
 const driverObj = driver({
     showProgress: true,
     steps: [
@@ -79,6 +80,12 @@ mode functionality of the application. */}
 <Route element={<Register/>} path='/register'/>
 <Route element={<Login/>} path='/login'/>
 <Route element={<ProfilePage/>} path='/profile'/>
+<Route element={<ComingSoon/>} path='/Articles'/>
+<Route element={<ComingSoon/>} path='/about'/>
+<Route element={<ComingSoon/>} path='/contact'/>
+<Route element={<ComingSoon/>} path='/faqs'/>
+<Route element={<ComingSoon/>} path='/pricing'/>
+
 <Route element={<NotFound/>} path='*'/>
 <Route path="/dashboard" element={<AdminLayout />}>
           <Route index element={<Admin />} />
