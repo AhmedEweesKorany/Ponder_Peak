@@ -8,7 +8,7 @@ const verifiedUser = async ({ id,token }) => {
           },
         };
 
-        const { data } = await axios.put(`/api/users/makeVreified/${id}`, config);
+        const { data } = await axios.get(`/api/users/makeVreified/${id}`, config);
         return data;
       } catch (error) {
         if (error.response && error.response.data.message)
