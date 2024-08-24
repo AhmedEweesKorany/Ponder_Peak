@@ -212,11 +212,13 @@ const EditPost = () => {
               {isPostDataLoaded && (
                 <textarea
                   defaultValue={data?.body}
+                  cols={150}
+                  rows={150}
                   onChange={(data) => {
                     setCurData({...curData,body:data.target.value});
                   }}
 
-                  className="d-input  d-input-bordered border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-semiblack w-full"
+                  className="d-input h-[200px] d-input-bordered border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-semiblack w-full"
                 >
 
                 </textarea>

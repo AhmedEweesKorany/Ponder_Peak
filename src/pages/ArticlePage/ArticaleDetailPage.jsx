@@ -9,6 +9,8 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { getAllPosts, getPostBySlug } from "../../services/posts";
 import { getPostComments } from "../../services/comments";
+import ReactMarkdown from 'react-markdown';
+
 
 const BreadCrumbData = [{
   link:"/",
@@ -79,7 +81,12 @@ const ArticaleDetailPage = () => {
         })}
         </div>
         <h1 className=" dark:text-white text-semiblack text-3xl font-bold my-5">{post?.title}</h1>
-        <p className="text-gray-600 dark:text-gray-400 tracking-wider leading-7">{post?.body}</p>
+        <p className="text-gray-600 dark:text-gray-400 tracking-wider leading-7"><ReactMarkdown>
+            {post?.body}
+          
+          </ReactMarkdown>
+          
+            </p>
 
         <CommentContainer postId={post?._id}/>
         </div>

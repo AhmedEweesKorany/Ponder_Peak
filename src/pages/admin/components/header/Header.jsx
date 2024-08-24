@@ -132,7 +132,7 @@ const Header = () => {
                 title="Home"
                 link="/"
                 icon={<FaHome className="text-xl" />}
-                name="users"
+                name="home"
                 activeNavName={activeNavName}
                 setActiveNavName={setActiveNavName}
               />

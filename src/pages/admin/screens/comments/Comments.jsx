@@ -49,6 +49,8 @@ const {
   return (
    
     <div className="px-4 py-4 -mx-4 overflow-x-auto sm:-mx-8 sm:px-8 overflow-hidden">
+    <h1 className="text-2xl font-semibold my-5">Manage Comments</h1>
+    <h2 className="text-2xl leading-tight my-5 mx-2">Comments</h2>
     <div className="inline-block min-w-full overflow-hidden rounded-lg shadow ">
       <table className="min-w-full leading-normal overflow-hidden">
         <thead>

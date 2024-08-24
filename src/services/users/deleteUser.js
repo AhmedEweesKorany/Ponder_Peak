@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const deleteUser = async ({ token }) => {
+const deleteUser = async ({ token,id }) => {
     try {
         const config = {
           headers: {
@@ -8,7 +8,7 @@ const deleteUser = async ({ token }) => {
           },
         };
 
-        const { data } = await axios.delete("/api/users/delete", config);
+        const { data } = await axios.delete(`/api/users/delete/${id}`, config);
         return data;
       } catch (error) {
         if (error.response && error.response.data.message)

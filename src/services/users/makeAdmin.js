@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const getAllUsers = async ({ token }) => {
+const makeAdmin = async ({ token,id }) => {
     try {
         const config = {
           headers: {
@@ -8,8 +8,8 @@ const getAllUsers = async ({ token }) => {
           },
         };
 
-        const { data } = await axios.get("/api/users/all", config);
-        return data.users;
+        const { data } = await axios.delete(`/api/users/makeAdmin/${id}`, config);
+        return data;
       } catch (error) {
         if (error.response && error.response.data.message)
           throw new Error(error.response.data.message);
@@ -17,4 +17,4 @@ const getAllUsers = async ({ token }) => {
       }
 };
 
-export default getAllUsers;
+export default makeAdmin;

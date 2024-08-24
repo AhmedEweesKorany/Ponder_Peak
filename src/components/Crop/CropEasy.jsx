@@ -49,6 +49,7 @@ dispatch(setUserInfo(JSON.parse(localStorage.getItem("account"))));
         toast.success(data.message)
     },
     onError: error=> {
+      console.log(error)
         toast.error(error.message)
     }
 })

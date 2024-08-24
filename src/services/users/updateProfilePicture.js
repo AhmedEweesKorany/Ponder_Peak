@@ -7,7 +7,7 @@ const updateProfilePicture =async ({token,userData})=>{
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,
-        },k
+        },
       };
    const {data} =   await axios.put("/api/users/updateProfilePicture",userData,config)
     return data;
