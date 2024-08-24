@@ -10,7 +10,7 @@ This is a blog application built using the MERN stack, with a focus on creating 
 - [Planning Phase](#planning-phase)
 - [Coding Phase](#coding-phase)
 - [Testing Phase](#testing-phase)
-- [Deployment Phase](#Deployment-phase)
+- [Deployment Phase](#deployment-phase)
 
 ## Designing Phase
 
