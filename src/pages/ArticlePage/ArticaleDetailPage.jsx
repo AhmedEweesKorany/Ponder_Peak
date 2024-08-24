@@ -10,6 +10,8 @@ import axios from "axios";
 import { getAllPosts, getPostBySlug } from "../../services/posts";
 import { getPostComments } from "../../services/comments";
 import ReactMarkdown from 'react-markdown';
+import rehypeHighlight from 'rehype-highlight';
+
 
 
 const BreadCrumbData = [{
@@ -81,7 +83,7 @@ const ArticaleDetailPage = () => {
         })}
         </div>
         <h1 className=" dark:text-white text-semiblack text-3xl font-bold my-5">{post?.title}</h1>
-        <p className="text-gray-600 dark:text-gray-400 tracking-wider leading-7"><ReactMarkdown>
+        <p className="text-gray-600 dark:text-gray-400 tracking-wider leading-7"><ReactMarkdown  rehypePlugins={[rehypeHighlight]}>
             {post?.body}
           
           </ReactMarkdown>
