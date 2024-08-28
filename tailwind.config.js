@@ -28,7 +28,7 @@ export default {
       }
     },
   },
-  plugins: [require("daisyui")],
+  plugins: [require("tailgrids/plugin")],
   daisyui: {
     themes: [], // true: all themes | false: only light + dark | array: specific themes like this ["light", "dark", "cupcake"]
     base: false, // applies background color and foreground color for root element by default
