@@ -19,13 +19,9 @@ const NavLinks = {
             type:"link"
         },{
             name:"Contact",
-            path:"/contact",
+            path:"#contact",
             type:"link"
         }]
-    },{
-        name:"Pricing",
-        path:"/pricing",
-        type:"link"
     },{
         name:"FAQs",
         path:"/faqs",

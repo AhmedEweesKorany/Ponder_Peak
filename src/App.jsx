@@ -25,14 +25,6 @@ import ComingSoon from './pages/ComingSoon/ComingSoon';
 import Articles from './pages/Articles/Articles';
 import FAQS from './pages/FAQS/FAQS';
 import About from './pages/About/About';
-const driverObj = driver({
-    showProgress: true,
-    steps: [
-      { element: '#ddd', popover: { title: 'Header', description: 'This is our hero section header' } },
-      { element: '#ppp', popover: { title: 'description', description: 'this is our hero section description' } },
-      { element: '#contact', popover: { title: 'Contact US Now', description: 'Enter your email to contacct us' } },
-    ]
-  });
 
   const App = () => {
     // inti dark mode
@@ -73,7 +65,6 @@ application to reflect the chosen mode. This component is likely connected to th
 `setDark` function provided by the `DarkModeContext.Provider`, allowing it to interact with the dark
 mode functionality of the application. */}
 <DarkModeToggler/>
-<TourGuied driverObj={driverObj}/>
 {/* The code snippet you provided is setting up routing for the application using the `Routes` and
 `Route` components from `react-router-dom`. */}
     <Routes>

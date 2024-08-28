@@ -158,7 +158,7 @@ const EditPost = () => {
               <input
                 id="title"
                 defaultValue={data?.title}
-                className="d-input d-input-bordered border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
+                className="d-input d-input-bordered w-full p-2 border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
                 onChange={(e) => setCurData({...curData,title:e.target.value})}
                 placeholder="title"
               />
@@ -170,7 +170,7 @@ const EditPost = () => {
               <input
                 id="caption"
                 defaultValue={data?.caption}
-                className="d-input d-input-bordered border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
+                className="d-input d-input-bordered w-full p-2 border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
                 onChange={(e) => setCurData({...curData,caption:e.target.value})}
                 placeholder="caption"
               />
@@ -182,7 +182,7 @@ const EditPost = () => {
               <input
                 id="slug"
                 value={postSlug}
-                className="d-input d-input-bordered border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
+                className="d-input d-input-bordered w-full p-2 border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
                 onChange={(e) =>
                   setPostSlug(e.target.value.replace(/\s+/g, "-").toLowerCase())
                 }

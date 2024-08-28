@@ -104,24 +104,24 @@ const AddNewPost = () => {
             </label>
             <input
               id="title"
-              className="d-input d-input-bordered border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
+              className="d-input d-input-bordered w-full p-2 border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
               onChange={(e) =>
                 setCurData({ ...curData, title: e.target.value })
               }
               placeholder="title"
             />
           </div>
-          <div className="d-form-control w-full">
+          <div className="d-form-control">
             <label className="d-label" htmlFor="caption">
               <span className="d-label-text">caption</span>
             </label>
             <input
               id="caption"
-              className="d-input d-input-bordered border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
+              className="d-input d-input-bordered w-full p-2 border-slate-300 !outline-slate-300 text-xl font-medium font-roboto text-dark-hard"
               onChange={(e) =>
                 setCurData({ ...curData, caption: e.target.value })
               }
-              placeholder="caption"
+              placeholder="aa"
             />
           </div>
 
