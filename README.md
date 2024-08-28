@@ -5,13 +5,21 @@
 This is a blog application built using the MERN stack, with a focus on creating a dynamic and interactive platform for writing and reading blog posts.
 
 ## Table of Contents
-
+- [Setup Instructions](#setup-instructions)
 - [Designing Phase](#designing-phase)
 - [Planning Phase](#planning-phase)
 - [Coding Phase](#coding-phase)
 - [Testing Phase](#testing-phase)
 - [Deployment Phase](#deployment-phase)
 
+
+## Setup Instructions 
+- run front-end part 
+``` npm i```
+``` npm run dev ``` 
+- run backend part 
+``` npm i ``` 
+``` npm run watch ```
 ## Designing Phase
 
 During the designing phase, we focused on the overall user experience and interface of the blog app. 
