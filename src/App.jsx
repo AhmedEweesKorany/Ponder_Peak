@@ -22,6 +22,7 @@ import Comments from './pages/admin/screens/comments/Comments';
 import Users from './pages/admin/screens/users/Users';
 import AddNewPost from './pages/admin/screens/posts/AddPost';
 import ComingSoon from './pages/ComingSoon/ComingSoon';
+import Articles from './pages/Articles/Articles';
 const driverObj = driver({
     showProgress: true,
     steps: [
@@ -80,7 +81,8 @@ mode functionality of the application. */}
 <Route element={<Register/>} path='/register'/>
 <Route element={<Login/>} path='/login'/>
 <Route element={<ProfilePage/>} path='/profile'/>
-<Route element={<ComingSoon/>} path='/Articles'/>
+<Route element={<Articles/>} path='/Articles/:searchData'/>
+<Route element={<Articles/>} path='/Articles'/>
 <Route element={<ComingSoon/>} path='/about'/>
 <Route element={<ComingSoon/>} path='/contact'/>
 <Route element={<ComingSoon/>} path='/faqs'/>

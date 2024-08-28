@@ -6,10 +6,7 @@ import { randomAnimation } from "../../../services/ui/randonAnimation";
 
 
 
-const handleClick = ()=>{
-  driverObj.drive();
 
-}
 const Hero = () => {
   const [value,setVaalue] = useState("")
   const valueHandler = (e)=>{
@@ -31,9 +28,7 @@ const Hero = () => {
 :""}
             <input type="text" onChange={(e)=>valueHandler(e)} name="" id="" placeholder="    Search Article" className=" rounded-md p-3 w-full focus:border-none focus:outline-none dark:shadow-inner dark:bg-gray-800" />
             </div>
-        <button onClick={()=>{
-          handleClick()
-        }} className="bg-primary px-3  rounded-lg text-white w-[130px]">Search</button>
+        <a href={`/Articles/${value}`} className="bg-primary px-3 flex justify-center items-center text-[20px] rounded-lg text-white w-[130px]">Search</a>
         </div>
         <div className="flex gap-4 mt-4 items-center flex-col sm:flex-row">
             <span className="italic" >Popular Tags:</span>
