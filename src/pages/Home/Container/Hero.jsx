@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { images } from "../../../constants";
 import { BiSearch } from "react-icons/bi";
 import { randomAnimation } from "../../../services/ui/randonAnimation";
+import { Link } from "react-router-dom";
 
 
 
@@ -28,7 +29,7 @@ const Hero = () => {
 :""}
             <input type="text" onChange={(e)=>valueHandler(e)} name="" id="" placeholder="    Search Article" className=" rounded-md p-3 w-full focus:border-none focus:outline-none dark:shadow-inner dark:bg-gray-800" />
             </div>
-        <a href={`/Articles/${value}`} className="bg-primary px-3 flex justify-center items-center text-[20px] rounded-lg text-white w-[130px]">Search</a>
+        <Link to={`/Articles/${value}`} className="bg-primary px-3 flex justify-center items-center text-[20px] rounded-lg text-white w-[130px]">Search</Link>
         </div>
         <div className="flex gap-4 mt-4 items-center flex-col sm:flex-row">
             <span className="italic" >Popular Tags:</span>
