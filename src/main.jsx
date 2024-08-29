@@ -10,7 +10,7 @@ import axios from 'axios'
 
   
 const queryClient = new QueryClient()
-axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'https://blogappbackend-api.up.railway.app/';
 ReactDOM.createRoot(document.getElementById('root')).render(
 
     <BrowserRouter>
