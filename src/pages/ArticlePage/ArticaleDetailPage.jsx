@@ -123,11 +123,11 @@ const ArticaleDetailPage = () => {
 
             </div>
           </div>
-        <SocialMediaShare/>
+        <SocialMediaShare url={encodeURI(`https://ponder-peak.vercel.app/article/${id}`)} title={encodeURIComponent(post?.title)}/>
         </div>
         </section>{" "}
     </MainLayout>
   );
-};
+};  
 
 export default ArticaleDetailPage;
