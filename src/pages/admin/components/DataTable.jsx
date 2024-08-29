@@ -11,14 +11,10 @@ const DataTable = ({
   isFetching,
   data,
   children,
-  setCurrentPage,
-  currentPage,
-  headers,
 }) => {
   return (
     <div>
       <h1 className="text-2xl font-semibold">{pageTitle}</h1>
-
       <div className="w-full px-4 mx-auto">
         <div className="py-8">
           <div className="flex flex-row justify-between w-full mb-1 sm:mb-0">

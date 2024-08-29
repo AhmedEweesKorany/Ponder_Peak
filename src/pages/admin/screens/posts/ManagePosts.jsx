@@ -1,4 +1,4 @@
-import { images, stables } from "../../../../constants";
+import { images, LoadingAnimation, stables } from "../../../../constants";
 import { deletePost, getAllPosts } from "../../../../services/posts";
 
 import { Link } from "react-router-dom";
@@ -164,7 +164,7 @@ Delete
         return <ErrorMessage message={"you don't have any posts"}/>
       }
     }else{
-      if( postsData?.filter(post => post?.user?._id === userData.userInfo.filterdData._id).length > 0 ){
+      if( isLoading ? <LoadingAnimation/>: postsData?.filter(post => post?.user?._id === userData.userInfo.filterdData._id).length > 0 ){
         return <>
            <h1 className="text-2xl font-semibold my-5">Manage Posts</h1>
            <h2 className="text-2xl leading-tight my-5">Posts</h2>

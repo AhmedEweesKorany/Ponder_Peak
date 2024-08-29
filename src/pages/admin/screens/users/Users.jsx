@@ -1,6 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 import { toast } from "react-hot-toast";
-import { images } from "../../../../constants";
+import { images, LoadingAnimation } from "../../../../constants";
 import axios from "axios";
 import { useSelector } from "react-redux";
 import { deleteUser, getAllUsers, makeAdmin, verifiedUser } from "../../../../services/users";
@@ -88,7 +88,7 @@ console.log(usersData)
           </tr>
         </thead>
         <tbody>
-            {usersData?.length > 0 ? usersData?.map((user,i)=>{
+            { isLoading ? <LoadingAnimation/> : usersData?.length > 0 ? usersData?.map((user,i)=>{
              return    <>
                
    <tr key={i}>

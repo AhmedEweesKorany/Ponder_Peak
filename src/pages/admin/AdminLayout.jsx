@@ -1,11 +1,13 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import Header from "./components/header/Header";
 
 
 const AdminLayout = () => {
-  
- 
 
+  const element = document.documentElement;
+  element.classList.remove("dark");
+  localStorage.removeItem('darkMode');
+  
   return (
     <div className="flex flex-col h-screen lg:flex-row overflow-x-hidden" >
       <Header />

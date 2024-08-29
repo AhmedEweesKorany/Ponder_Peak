@@ -8,7 +8,7 @@ import {
   updateComment,
 } from "../../../../services/comments";
 import DataTable from "../../components/DataTable";
-import { images } from "../../../../constants";
+import { images, LoadingAnimation } from "../../../../constants";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { useSelector } from "react-redux";
@@ -67,7 +67,7 @@ const {
           </tr>
         </thead>
         <tbody>
-            {commentsData?.length > 0 ? commentsData?.map((comment,i)=>{
+            { isLoading ?<LoadingAnimation/> : commentsData?.length > 0 ? commentsData?.map((comment,i)=>{
              return    <>
                
    <tr key={i}>
