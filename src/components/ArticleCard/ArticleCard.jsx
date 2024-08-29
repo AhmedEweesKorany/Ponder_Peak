@@ -19,19 +19,13 @@ const ArticleCard = ({ className,to,data }) => {
     <div
       className={`${className} rounded-xl overflow-hidden shadow-2xl shadow-blue-500/20 dark:shadow-primary/20`}
     >
-<Link to={to} onClick={(e)=>{
-  e.preventDefault()
-  window.location.href = to
-  setTimeout(()=>{
-    window.scrollTo(0,0)
-  },1000)
-}}>
+<a href={to} >
 <img
         src={ data?.avatar ? axios.defaults.baseURL + "/uploads/" + data?.avatar : images.post1}
         alt="articleCardImg"
         className="w-full h-[400px] object-cover  object-center"
       />
-</Link>
+</a>
       <div className="p-5">
         <h2  className=" font-roboto font-bold text-x text-semiblack dark:text-white">
           {data?.title}
